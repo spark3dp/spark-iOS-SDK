@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSString * refreshCode;
 
+-(instancetype)initWithRefreshCode:(NSString*)refreshCode;
+
 @end

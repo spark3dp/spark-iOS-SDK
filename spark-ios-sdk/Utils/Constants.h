@@ -81,7 +81,7 @@ static const NSString* SPARK_EXCEPTION_PERMISSION_NETWORK = @"Please Define Netw
 static const NSString* SPARK_EXCEPTION_CONFIGURATION_ADD_INIT = @"Please Add Call To [ init ] Method.";
 static const NSString* SPARK_EXCEPTION_CONFIGURATION_GET_TOKEN = @"Please Get Access Token First";
 static const NSString* SPARK_EXCEPTION_CONFIGURATION_APPKEY = @"Please Add App Key.";
-static const NSString* SPARK_EXCEPTION_ACCESS_TOKEN_REQUIRED = @"Guest Token not allows this operation.\nPlease use Access Token.";
+static NSString* SPARK_EXCEPTION_ACCESS_TOKEN_REQUIRED = @"Guest Token not allows this operation.\nPlease use Access Token.";
 
 //Spark Server Exceptions
 static const NSString* SPARK_SERVER_ERROR_ACCESS_TOKEN_EXPIRED = @"Access Token expired";

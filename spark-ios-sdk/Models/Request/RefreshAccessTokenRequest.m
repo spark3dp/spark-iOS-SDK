@@ -10,4 +10,11 @@
 
 @implementation RefreshAccessTokenRequest
 
+-(instancetype)initWithRefreshCode:(NSString*)refreshCode{
+    self = [super init];
+    if (self) {
+        _refreshCode = refreshCode;
+    }
+    return self;
+}
 @end
