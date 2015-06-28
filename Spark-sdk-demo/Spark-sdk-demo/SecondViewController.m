@@ -1,18 +1,18 @@
 //
-//  ViewController.m
-//  spark-ios-sdk
+//  SecondViewController.m
+//  Spark-sdk-demo
 //
-//  Created by Tomer Har Yoffi on 6/14/15.
+//  Created by Tomer Har Yoffi on 6/25/15.
 //  Copyright (c) 2015 Tomer Har Yoffi. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SecondViewController.h"
 
-@interface ViewController ()
+@interface SecondViewController ()
 
 @end
 
-@implementation ViewController
+@implementation SecondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

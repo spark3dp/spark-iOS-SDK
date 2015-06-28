@@ -50,9 +50,9 @@ typedef enum ActionType
 // API with no need of Access Token
 //----------------------------------
 
--(void)getGuestTokenAccessTokenResponse:(id<SparkResponseDelegate>) onGuestTokenResponse {
+-(void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock {
     // Call the class that encapsulate the call
-    [_baseNetworkWrapper sparkGetGuestToken:onGuestTokenResponse];
+    //[_baseNetworkWrapper sparkGetGuestToken:onGuestTokenResponse];
 }
 
 -(void)getAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse {
@@ -60,8 +60,8 @@ typedef enum ActionType
     [_baseNetworkWrapper sparkGetAccessToken:authCode accessTokenResponse:onAccessTokenResponse];
 }
 
--(void)getAuthorizationCodeAccessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse {
-    [self initAndShowWebviewAccessTokenResponse:onAccessTokenResponse];
+-(void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock {
+    [self initAndShowWebview:succsesBlock failure:failBlock];
 }
 
 -(void)getRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse {
@@ -222,7 +222,7 @@ typedef enum ActionType
     [self callWithUpdateRefreshToken:AT_SPARK_JOB_STATUS withObject:jobStatus responde:onSparkResponse checkToken:YES];
 }
 
--(void)initAndShowWebviewAccessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse{
+-(void)initAndShowWebview:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock{
     //        final ProgressDialog pd = new ProgressDialog(activity);
     //        pd.setIndeterminate(true);
     //        pd.show();

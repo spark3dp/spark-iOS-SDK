@@ -19,7 +19,10 @@
 #import "CreateJobRequest.h"
 #import "CommandSendRequest.h"
 #import "PrinterJobStatusRequest.h"
+#import "AccessTokenResponse.h"
 
+typedef void(^SparkAuthenticationSuccessBlock)(AccessTokenResponse* responseObject);
+typedef void(^SparkAuthenticationFailureBlock)(NSString* error);
 
 @protocol SparkResponseDelegate <NSObject>
 @optional

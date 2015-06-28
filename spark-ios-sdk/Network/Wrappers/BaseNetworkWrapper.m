@@ -7,12 +7,15 @@
 //
 
 #import "BaseNetworkWrapper.h"
+#import "GuestTokenTask.h"
 
 @implementation BaseNetworkWrapper
-
+//-------------------------------------------------
 //SparkAuthenticationDelegate
+//-------------------------------------------------
 -(void)sparkGetGuestToken:(id<SparkResponseDelegate>) onGuestTokenResponse{
-    new GuestTokenTask(onGuestTokenResponse).execute(getQueue());
+    GuestTokenTask * gtt = [[GuestTokenTask alloc] initGuestTokenTask:onGuestTokenResponse];
+    [gtt executeApiCall];
 }
 
 -(void)sparkGetAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>)onAccessTokenResponse{
@@ -23,7 +26,9 @@
     //new RefreshTokenTask(refreshCode,onRefreshTokenResponse).execute(getQueue());
 }
 
+//-------------------------------------------------
 //SparkDriveDelegate
+//-------------------------------------------------
 -(void)sparkGetAsset:(AssetRequest*)asset assetResponse:(id<SparkResponseDelegate>) onAssetResponse{
     //new AssetTask(asset, onAssetResponse).execute(getQueue());
 }
@@ -48,7 +53,9 @@
     //new CreateFileTask(file, onSparkResponse).execute(getQueue());
 }
 
+//-------------------------------------------------
 //SparkPrintDelegate
+//-------------------------------------------------
 -(void)sparkRegisterPrinter:(PrinterRegisterRequest*)printer printerRegisterResponse:(id<SparkResponseDelegate>) onSparkResponse{
     //new RegisterPrinterTask(printer, onSparkResponse).execute(getQueue());
 }

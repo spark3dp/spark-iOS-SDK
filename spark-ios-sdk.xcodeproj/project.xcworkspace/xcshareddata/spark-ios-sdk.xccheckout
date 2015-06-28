@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>05095E2B-1FE9-4F77-9745-08F8F84C91B6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>spark-ios-sdk</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1799DEDFBE72A6C5D9D259FB7F2845EDDF0F1CCC</key>
+		<string>https://github.com/spark3dp/spark-ios-SDK.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>spark-ios-sdk.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1799DEDFBE72A6C5D9D259FB7F2845EDDF0F1CCC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/spark3dp/spark-ios-SDK.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1799DEDFBE72A6C5D9D259FB7F2845EDDF0F1CCC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1799DEDFBE72A6C5D9D259FB7F2845EDDF0F1CCC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>spark-ios-sdk</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,19 +1,19 @@
 //
-//  spark_ios_sdkTests.m
-//  spark-ios-sdkTests
+//  Spark_sdk_demoTests.m
+//  Spark-sdk-demoTests
 //
-//  Created by Tomer Har Yoffi on 6/14/15.
+//  Created by Tomer Har Yoffi on 6/25/15.
 //  Copyright (c) 2015 Tomer Har Yoffi. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface spark_ios_sdkTests : XCTestCase
+@interface Spark_sdk_demoTests : XCTestCase
 
 @end
 
-@implementation spark_ios_sdkTests
+@implementation Spark_sdk_demoTests
 
 - (void)setUp {
     [super setUp];

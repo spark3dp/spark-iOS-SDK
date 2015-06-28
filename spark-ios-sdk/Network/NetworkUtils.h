@@ -12,4 +12,8 @@
 @interface NetworkUtils : NSObject
 
 @property (nonatomic, strong) BaseNetworkWrapper * baseNetworkWrapper;
+
+-(void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+-(void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+
 @end

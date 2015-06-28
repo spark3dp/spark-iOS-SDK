@@ -46,82 +46,82 @@ static SparkLogicManager *sharedInstance = nil;
 }
 
 -(void)setAccessToken:(NSString*)accessToken {
-    self.accessToken = accessToken;
+    _accessToken = accessToken;
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.accessToken forKey:SHARED_PREFERENCE_ACCESS_TOKEN];
+    [defaults setObject:_accessToken forKey:SHARED_PREFERENCE_ACCESS_TOKEN];
     [defaults synchronize];
 }
 
 -(void)setRefreshToken:(NSString*) refreshToken {
-    self.refreshToken = refreshToken;
+    _refreshToken = refreshToken;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.refreshToken forKey:SHARED_PREFERENCE_REFRESH_TOKEN];
+    [defaults setObject:_refreshToken forKey:SHARED_PREFERENCE_REFRESH_TOKEN];
     [defaults synchronize];
 }
 
 -(void)setAppKey:(NSString*) appKey {
-    self.appKey = appKey;
+    _appKey = appKey;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.appKey forKey:SHARED_PREFERENCE_APP_KEY];
+    [defaults setObject:_appKey forKey:SHARED_PREFERENCE_APP_KEY];
     [defaults synchronize];
 }
 
 -(void)setAppSecret:(NSString*) appSecret {
-    self.appSecret = appSecret;
+    _appSecret = appSecret;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.appSecret forKey:SHARED_PREFERENCE_APP_SECRET];
+    [defaults setObject:_appSecret forKey:SHARED_PREFERENCE_APP_SECRET];
     [defaults synchronize];
 }
 
 -(void)setAppKeySecretBase64:(NSString*) appKeySecretBase64 {
-    self.appKeySecretBase64 = appKeySecretBase64;
+    _appKeySecretBase64 = appKeySecretBase64;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.appKeySecretBase64 forKey:SHARED_PREFERENCE_APP_KEY_SECRET_BASE64];
+    [defaults setObject:_appKeySecretBase64 forKey:SHARED_PREFERENCE_APP_KEY_SECRET_BASE64];
     [defaults synchronize];
 }
 
 -(void)setAuthorizationType:(NSInteger) authorizationType {
-    self.authorizationType = authorizationType;
+    _authorizationType = authorizationType;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:self.authorizationType  forKey:SHARED_PREFERENCE_AUTHORIZATION_TYPE];
+    [defaults setInteger:_authorizationType  forKey:SHARED_PREFERENCE_AUTHORIZATION_TYPE];
     [defaults synchronize];
 }
 
 -(void)setExpiresAt:(long) expiresAt {
-    self.expiresAt = expiresAt;
+    _expiresAt = expiresAt;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithLong:self.expiresAt] forKey:SHARED_PREFERENCE_EXPIRES_AT];
+    [defaults setObject:[NSNumber numberWithLong:_expiresAt] forKey:SHARED_PREFERENCE_EXPIRES_AT];
     [defaults synchronize];
 }
 
 -(void)setDebugMode:(BOOL) debugMode{
-    self.debugMode = debugMode;
+    _debugMode = debugMode;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:self.debugMode forKey:SHARED_PREFERENCE_DEBUG_MODE];
+    [defaults setBool:_debugMode forKey:SHARED_PREFERENCE_DEBUG_MODE];
     [defaults synchronize];
 }
 
 -(void)setAppKeySecretBase64{
     NSString * textToEncode = [NSString stringWithFormat:@"%@:%@",self.appKey, self.appSecret];
     NSData *data = [textToEncode dataUsingEncoding:NSUTF8StringEncoding];
-    self.appKeySecretBase64 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    _appKeySecretBase64 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     NSLog(@"Spark Config BASE64 : %@", self.appKeySecretBase64);
 }
 
 -(void)setBaseURLType:(NSInteger)baseURLType{
-    self.baseURLType = baseURLType;
+    _baseURLType = baseURLType;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:self.baseURLType  forKey:SHARED_PREFERENCE_BASE_URL];
+    [defaults setInteger:_baseURLType  forKey:SHARED_PREFERENCE_BASE_URL];
     [defaults synchronize];
 }
 
