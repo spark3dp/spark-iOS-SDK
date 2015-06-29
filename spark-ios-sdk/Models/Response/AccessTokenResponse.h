@@ -10,9 +10,9 @@
 
 @interface AccessTokenResponse : NSObject
 
-@property (nonatomic, strong) NSString * access_token;
-@property (nonatomic, strong) NSString * refresh_token;
-@property (nonatomic, strong) NSString * expires_in;
-@property (nonatomic, strong) NSString * expires_at;
+@property (nonatomic, strong) NSString * accessToken;
+@property (nonatomic, strong) NSString * refreshToken;
+@property (nonatomic, strong) NSString * expiresIn;
+@property (nonatomic, strong) NSString * expiresAt;
 
 @end

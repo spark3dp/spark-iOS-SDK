@@ -11,6 +11,8 @@
 #import "Protocols.h"
 
 @interface GuestTokenTask : BaseSparkRequest
--(instancetype)initGuestTokenTask:(id<SparkResponseDelegate>)delegate;
+
+-(instancetype)initGuestTokenTask:(SparkAuthenticationSuccessBlock)succsesBlock
+                          failure:(SparkAuthenticationFailureBlock)failBlock;
 -(void)executeApiCall;
 @end

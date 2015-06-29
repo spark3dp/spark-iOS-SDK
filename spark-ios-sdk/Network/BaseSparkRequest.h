@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Protocols.h"
 
-@interface BaseSparkRequest : NSObject
-
-@property (nonatomic, weak) id<SparkResponseDelegate> delegate;
+@interface BaseSparkRequest : NSObject{
+    SparkAuthenticationSuccessBlock _succes;
+    SparkAuthenticationFailureBlock _failure;
+}
 
 @end

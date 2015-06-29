@@ -11,4 +11,5 @@
 
 @interface BaseNetworkWrapper : NSObject <SparkAuthenticationDelegate, SparkDriveDelegate, SparkPrintDelegate>
 
+-(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
 @end

@@ -12,9 +12,9 @@
 #import "NetworkUtils.h"
 
 
-@interface SparkAuthentication : NSObject{
-    NetworkUtils * _networkUtils;
-}
+@interface SparkAuthentication : NSObject
+
+@property (nonatomic, strong) NetworkUtils * networkUtils;
 
 + (SparkAuthentication *)sharedInstance;
 - (void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;

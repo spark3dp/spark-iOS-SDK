@@ -14,9 +14,9 @@
 @property (nonatomic, strong) NetworkUtils * networkUtils;
 
 + (SparkManager *)sharedInstance;
-+ (void)init:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType;
-+ (void)setDebugMode:(BOOL)debugMode;
-+ (BOOL)checkPreAccessToken;
-+ (BOOL)checkPreConfiguration;
+- (void)initKey:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType;
+- (void)setDebugMode:(BOOL)debugMode;
+- (BOOL)checkPreAccessToken;
+- (BOOL)checkPreConfiguration;
 
 @end

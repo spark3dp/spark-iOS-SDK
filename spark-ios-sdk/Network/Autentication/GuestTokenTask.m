@@ -13,12 +13,14 @@
 
 @implementation GuestTokenTask
 
--(instancetype)initGuestTokenTask:(id<SparkResponseDelegate>)delegate{
+-(instancetype)initGuestTokenTask:(SparkAuthenticationSuccessBlock)succsesBlock
+                          failure:(SparkAuthenticationFailureBlock)failBlock{
     self = [super init];
     if (self) {
-        self.delegate = delegate;
-        
+        _succes = succsesBlock;
+        _failure = failBlock;
     }
+    
     return self;
 }
 
@@ -30,7 +32,10 @@
     [urlStr appendString:@"/"];
     [urlStr appendString:API_GET_GUEST_TOKEN];
 
-    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=client_credentials&client_id=%@&client_secret=%@", [[SparkLogicManager sharedInstance] appKey], [[SparkLogicManager sharedInstance] appSecret]];
+    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=client_credentials&client_id=%@&client_secret=%@",
+                                       [[SparkLogicManager sharedInstance] appKey],
+                                       [[SparkLogicManager sharedInstance] appSecret]];
+    
     NSData * encodeData = [httpPostBody dataUsingEncoding:NSUTF8StringEncoding];
 
     NSURL * url = [NSURL URLWithString:urlStr];
@@ -44,11 +49,26 @@
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                
-                           
+                               //NSString* encodeRespose = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                
-                               NSString* encodeRespose = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               NSDictionary *JSON =
+                               [NSJSONSerialization JSONObjectWithData: data
+                                                               options: NSJSONReadingMutableContainers
+                                                                 error: &error];
+                               
+                               if (JSON) {
+                                   AccessTokenResponse * accessTokenResponse = [[AccessTokenResponse alloc] init];
+                                   
+                                   accessTokenResponse.accessToken = [JSON objectForKey:@"access_token"];
+                                   accessTokenResponse.refreshToken = [JSON objectForKey:@"refresh_token"];
+                                   accessTokenResponse.expiresIn = [JSON objectForKey:@"expires_in"];
+                                   accessTokenResponse.expiresAt = [JSON objectForKey:@"expires_at"];
+                                   _succes(accessTokenResponse);
+                               }else{
+                                   _failure(error.localizedDescription);
+                               }
+                              
                            }];
-    
 }
 
 

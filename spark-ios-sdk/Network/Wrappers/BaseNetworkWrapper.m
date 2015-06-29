@@ -13,8 +13,8 @@
 //-------------------------------------------------
 //SparkAuthenticationDelegate
 //-------------------------------------------------
--(void)sparkGetGuestToken:(id<SparkResponseDelegate>) onGuestTokenResponse{
-    GuestTokenTask * gtt = [[GuestTokenTask alloc] initGuestTokenTask:onGuestTokenResponse];
+-(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock{
+    GuestTokenTask * gtt = [[GuestTokenTask alloc] initGuestTokenTask:succsesBlock failure:failBlock];
     [gtt executeApiCall];
 }
 

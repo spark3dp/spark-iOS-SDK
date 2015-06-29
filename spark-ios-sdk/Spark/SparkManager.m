@@ -10,6 +10,7 @@
 #import "SparkLogicManager.h"
 #import "Utils.h"
 #import "Constants.h"
+#import "SparkAuthentication.h"
 
 
 @implementation SparkManager
@@ -27,16 +28,7 @@ static SparkManager *sharedInstance = nil;
 }
 
 
-/**
- * Init Spark API - Use this method the init the Spark API with the app key & app secret
- *
- * @param context Current activity
- * @param appKey Spark App Key from the dev portal
- * @param appSecret Spark App Secret from the dev portal
- */
-+(void) init:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType {
-    [[SparkManager sharedInstance] sparkInit:appKey appSecret:appSecret envType:envType];
-}
+
 
 /**
  * Enable Spark Debug Mode
@@ -45,14 +37,21 @@ static SparkManager *sharedInstance = nil;
  *
  */
 
-+(void)setDebugMode:(BOOL) debugMode {
+-(void)setDebugMode:(BOOL) debugMode {
     [[SparkLogicManager sharedInstance] setDebugMode:debugMode];
 }
 
--(void)sparkInit:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType {
+/**
+ * Init Spark API - Use this method the init the Spark API with the app key & app secret
+ *
+ * @param context Current activity
+ * @param appKey Spark App Key from the dev portal
+ * @param appSecret Spark App Secret from the dev portal
+ */
+-(void)initKey:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType {
     
     // set the keys
-    [[SparkLogicManager sharedInstance]setAppKeySecret:appKey appSecret:appSecret envType:envType];
+    [[SparkLogicManager sharedInstance] setAppKeySecret:appKey appSecret:appSecret envType:envType];
     
     // check that all configured well
     if ([self checkConfiguration]) {
@@ -61,7 +60,7 @@ static SparkManager *sharedInstance = nil;
         self.networkUtils = [[NetworkUtils alloc] init];
         
         // init the sub variables for api calls
-        //SparkAuthentication.getInstance().setNetworkUtils(mNetworkUtils);
+        [[SparkAuthentication sharedInstance] setNetworkUtils:self.networkUtils];
         
         //SparkDrive.getInstance().setNetworkUtils(mNetworkUtils);
         
@@ -75,7 +74,7 @@ static SparkManager *sharedInstance = nil;
  * @return true if the configuration is valid.
  * valid configuration when is when Spark.init is called
  */
-+(BOOL)checkPreConfiguration{
+-(BOOL)checkPreConfiguration{
     // check for existance of the access tokens
     if ([[[SparkLogicManager sharedInstance] accessToken] isEqualToString:@""])
     {
@@ -100,7 +99,7 @@ static SparkManager *sharedInstance = nil;
  * @return true if the configuration is valid.
  * valid configuration when is when Accesstoken available.
  */
-+(BOOL)checkPreAccessToken{
+-(BOOL)checkPreAccessToken{
     
     // check for the init
     if ([[SparkManager sharedInstance] networkUtils] == nil)

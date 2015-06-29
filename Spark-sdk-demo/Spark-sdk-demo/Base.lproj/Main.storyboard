@@ -40,10 +40,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bon-Tb-TMl" userLabel="Refresh Text Field">
-                                <rect key="frame" x="178" y="198" width="244" height="30"/>
+                                <rect key="frame" x="153" y="198" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JVJ-gn-ucK"/>
-                                    <constraint firstAttribute="width" constant="244" id="PUn-EK-x4S"/>
+                                    <constraint firstAttribute="width" constant="300" id="PUn-EK-x4S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -60,18 +60,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8d-ac-5Pt" userLabel="Access Text Field">
-                                <rect key="frame" x="178" y="110" width="244" height="30"/>
+                                <rect key="frame" x="153" y="110" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8Nv-x0-7Oa"/>
-                                    <constraint firstAttribute="width" constant="244" id="vg5-SD-GiF"/>
+                                    <constraint firstAttribute="width" constant="300" id="vg5-SD-GiF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-7o-Pp3">
-                                <rect key="frame" x="178" y="286" width="244" height="30"/>
+                                <rect key="frame" x="153" y="286" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="esI-iW-IZT"/>
+                                    <constraint firstAttribute="width" constant="300" id="esI-iW-IZT"/>
                                     <constraint firstAttribute="height" constant="30" id="sCE-0h-ANy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -89,9 +89,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qnf-Cb-P5U" userLabel="Guest Text Field">
-                                <rect key="frame" x="178" y="374" width="244" height="30"/>
+                                <rect key="frame" x="153" y="374" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="207-hA-RdS"/>
+                                    <constraint firstAttribute="width" constant="300" id="207-hA-RdS"/>
                                     <constraint firstAttribute="height" constant="30" id="bbc-La-s5H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -137,7 +137,7 @@
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="9e3-cU-r7h"/>
                             <constraint firstItem="M8d-ac-5Pt" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="90" id="Bg9-pA-OXf"/>
                             <constraint firstItem="Nq9-V6-oh1" firstAttribute="top" secondItem="aEg-7o-Pp3" secondAttribute="bottom" constant="8" id="KyQ-Z7-9Xw"/>
-                            <constraint firstAttribute="centerX" secondItem="aEg-7o-Pp3" secondAttribute="centerX" id="Lsf-lu-TwT"/>
+                            <constraint firstAttribute="centerX" secondItem="aEg-7o-Pp3" secondAttribute="centerX" constant="-3" id="Lsf-lu-TwT"/>
                             <constraint firstItem="0rj-Q6-kHW" firstAttribute="top" secondItem="aEg-7o-Pp3" secondAttribute="bottom" constant="33" id="NsU-RK-dc9"/>
                             <constraint firstItem="0rj-Q6-kHW" firstAttribute="top" secondItem="Qnf-Cb-P5U" secondAttribute="bottom" constant="42" id="OXI-Yq-kTJ"/>
                             <constraint firstAttribute="centerX" secondItem="Nq9-V6-oh1" secondAttribute="centerX" id="Utc-Xn-8ed"/>
@@ -145,8 +145,8 @@
                             <constraint firstAttribute="centerX" secondItem="lke-4w-0cJ" secondAttribute="centerX" constant="-3.5" id="YMh-FR-FWm"/>
                             <constraint firstItem="Jhq-yE-Dm3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="157" id="a2D-Hn-xAg"/>
                             <constraint firstItem="KQZ-1w-vlD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="bXH-Fy-79k"/>
-                            <constraint firstAttribute="centerX" secondItem="Qnf-Cb-P5U" secondAttribute="centerX" id="bga-vH-2Le"/>
-                            <constraint firstAttribute="centerX" secondItem="M8d-ac-5Pt" secondAttribute="centerX" id="bht-KH-784"/>
+                            <constraint firstAttribute="centerX" secondItem="Qnf-Cb-P5U" secondAttribute="centerX" constant="-3" id="bga-vH-2Le"/>
+                            <constraint firstAttribute="centerX" secondItem="M8d-ac-5Pt" secondAttribute="centerX" constant="-3" id="bht-KH-784"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" constant="220" id="exm-UA-ej4"/>
                             <constraint firstItem="Bon-Tb-TMl" firstAttribute="top" secondItem="M8d-ac-5Pt" secondAttribute="bottom" constant="58" id="fUa-Ne-Zhd"/>
                             <constraint firstItem="aEg-7o-Pp3" firstAttribute="top" secondItem="Bon-Tb-TMl" secondAttribute="bottom" constant="58" id="hl3-7S-i1V"/>
@@ -155,7 +155,7 @@
                             <constraint firstAttribute="centerX" secondItem="Alw-bB-pmI" secondAttribute="centerX" id="s7l-D8-2dD"/>
                             <constraint firstItem="Alw-bB-pmI" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="157" id="vTh-Pi-5bN"/>
                             <constraint firstItem="lke-4w-0cJ" firstAttribute="top" secondItem="0rj-Q6-kHW" secondAttribute="bottom" constant="23" id="xra-Rp-JTE"/>
-                            <constraint firstAttribute="centerX" secondItem="Bon-Tb-TMl" secondAttribute="centerX" id="yoF-82-S2x"/>
+                            <constraint firstAttribute="centerX" secondItem="Bon-Tb-TMl" secondAttribute="centerX" constant="-3" id="yoF-82-S2x"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -171,6 +171,7 @@
                     <tabBarItem key="tabBarItem" title="Auth" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="accessTokenTextField" destination="M8d-ac-5Pt" id="zyj-HP-3ro"/>
+                        <outlet property="guestTokenTextField" destination="Qnf-Cb-P5U" id="Bx4-5i-0yt"/>
                         <outlet property="refreshTokenTextField" destination="Bon-Tb-TMl" id="bKO-Im-tjV"/>
                         <outlet property="sessionTokenTypeTextField" destination="aEg-7o-Pp3" id="3kn-ww-1hj"/>
                     </connections>

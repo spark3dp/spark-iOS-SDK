@@ -24,21 +24,12 @@ static SparkAuthentication *sharedInstance = nil;
     return sharedInstance;
 }
 
--(instancetype)init{
-    self = [super init];
-    if (self) {
-        _networkUtils = [[NetworkUtils alloc] init];
-    }
-    
-    return self;
-}
-
 - (void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock
               failure:(SparkAuthenticationFailureBlock)failBlock;
 {
  
-    if ([SparkManager checkPreAccessToken]) {
-        [_networkUtils getGuestToken:succsesBlock failure:failBlock];
+    if ([[SparkManager sharedInstance] checkPreAccessToken]) {
+        [self.networkUtils getGuestToken:succsesBlock failure:failBlock];
     }
 }
 

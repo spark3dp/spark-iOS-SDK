@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
+#import "SparkManager.h"
+
+#define SPARK_API_KEY @"mbrTS20Y8BFH7a0O3484B1QjvJQ93tgp"
+#define SPARK_API_SECRET @"s0PAMowXbAffpNvG"
 
 @interface AppDelegate ()
 
@@ -17,6 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Use init with keys in case of app + secret
+    NSString *key = SPARK_API_KEY;
+    NSString *secret = SPARK_API_SECRET;
+    
+    [[SparkManager sharedInstance] initKey:key appSecret:secret envType:SPARK_ENV_TYPE_SANBOX];
+    [[SparkManager sharedInstance] setDebugMode:YES];
+
     return YES;
 }
 

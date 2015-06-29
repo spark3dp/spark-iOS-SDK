@@ -39,7 +39,7 @@ typedef enum ActionType
 } ActionType;
 
 -(instancetype)init{
-    self = [self init];
+    self = [super init];
     if (self) {
         _baseNetworkWrapper = [[BaseNetworkWrapper alloc] init];
     }
@@ -52,7 +52,7 @@ typedef enum ActionType
 
 -(void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock {
     // Call the class that encapsulate the call
-    //[_baseNetworkWrapper sparkGetGuestToken:onGuestTokenResponse];
+    [_baseNetworkWrapper sparkGetGuestToken:succsesBlock failure:failBlock];
 }
 
 -(void)getAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse {

@@ -32,7 +32,7 @@
 - (IBAction)grantSparkGuestTokenPressed:(id)sender {
     
     [[SparkAuthentication sharedInstance] getGuestToken:^(AccessTokenResponse *responseObject) {
-        [self.guestTokenTextField setText:responseObject.access_token];
+        [self.guestTokenTextField setText:responseObject.accessToken];
         [self updateSessionDetails];
     } failure:^(NSString *error) {
         [self.guestTokenTextField setText:error];
@@ -41,7 +41,7 @@
 
 - (IBAction)grantSparkAccessTokenPressed:(id)sender {
     [[SparkAuthentication sharedInstance] getAuthorizationCode:^(AccessTokenResponse *responseObject) {
-        [self.accessTokenTextField setText:responseObject.access_token];
+        [self.accessTokenTextField setText:responseObject.accessToken];
         [self updateSessionDetails];
     } failure:^(NSString *error) {
         [self.accessTokenTextField setText:error];
