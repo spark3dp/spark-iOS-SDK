@@ -52,21 +52,28 @@ typedef enum ActionType
 
 -(void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock {
     // Call the class that encapsulate the call
-    [_baseNetworkWrapper sparkGetGuestToken:succsesBlock failure:failBlock];
+    [_baseNetworkWrapper sparkGetGuestToken:succsesBlock failureBlock:failBlock];
 }
 
--(void)getAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse {
+-(void)getAccessToken:(AuthCodeRequest*)authCode
+         succsesBlock:(SparkAuthenticationSuccessBlock)succsesBlock
+         failureBlock:(SparkAuthenticationFailureBlock)failBlock{
+    
     // Call the class that encapsulate the call
-    [_baseNetworkWrapper sparkGetAccessToken:authCode accessTokenResponse:onAccessTokenResponse];
+    [_baseNetworkWrapper sparkGetAccessToken:authCode succsesBlock:succsesBlock failureBlock:failBlock];
 }
 
--(void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock {
-    [self initAndShowWebview:succsesBlock failure:failBlock];
+-(void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock  parentViewController:(UIViewController*)parent {
+    
+    _succsesBlock = succsesBlock;
+    _failBlock = failBlock;
+    
+    [self initAndShowWebviewWithParent:parent];
 }
 
 -(void)getRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse {
     
-    [_baseNetworkWrapper sparkGetRefreshToken:refreshCode accessTokenResponse:onRefreshTokenResponse];
+    //[_baseNetworkWrapper sparkGetRefreshToken:refreshCode accessTokenResponse:onRefreshTokenResponse];
 }
 
 -(void)callWithUpdateRefreshToken:(ActionType)action withObject:(id)object responde:(id<SparkResponseDelegate>) onResponse {
@@ -222,63 +229,76 @@ typedef enum ActionType
     [self callWithUpdateRefreshToken:AT_SPARK_JOB_STATUS withObject:jobStatus responde:onSparkResponse checkToken:YES];
 }
 
--(void)initAndShowWebview:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock{
-    //        final ProgressDialog pd = new ProgressDialog(activity);
-    //        pd.setIndeterminate(true);
-    //        pd.show();
+-(void)initAndShowWebviewWithParent:(UIViewController*)parent{
+
+    NSMutableString * initialUrl = [NSMutableString string];
+    [initialUrl appendString:[Utils getBaseURL]];
+    [initialUrl appendString:@"/"];
+    [initialUrl appendString:API_AUTHORIZE];
+    [initialUrl appendString:@"?"];
+    [initialUrl appendString:[NSString stringWithFormat:@"%@=%@", SPARK_LOGIN_REQUEST_PARAM_RESPONSE_TYPE, SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE]];
+    [initialUrl appendString:@"&"];
+    [initialUrl appendString:[NSString stringWithFormat:@"%@=%@", SPARK_LOGIN_REQUEST_PARAM_CLIENT_ID, [[SparkLogicManager sharedInstance] appKey]]];
+    [initialUrl appendString:@"&"];
     
-//    Uri.Builder builder = new Uri.Builder();
-//    builder.scheme(Constants.SPARK_SCHEME)
-//    .authority(Utils.getBaseURL())
-//    .appendPath(Constants.API_AUTHORIZE)
-//    .appendQueryParameter(Constants.SPARK_LOGIN_REQUEST_PARAM_RESPONSE_TYPE, Constants.SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE)
-//    .appendQueryParameter(Constants.SPARK_LOGIN_REQUEST_PARAM_CLIENT_ID, MemoryManager.getInstance().getAppKey())
-//    .appendQueryParameter(Constants.SPARK_LOGIN_REQUEST_PARAM_REDIRECT_URI, Constants.SPARK_BOGUS_REDIRECT_URL);
-//    Uri uri = builder.build();
-//    final String initialUrl = URLDecoder.decode(uri.toString());
-//    
-//    
-//    LoginWebView webView = new LoginWebView(mContext);
-//    
-//    if (MemoryManager.getInstance().getDebugMode()) {
-//        DebugModeUtils.logDebugMessage(TAG, "Logging into Spark with URL:", initialUrl);
-//    }
-//    
-//    webView.loadUrl(initialUrl);
-//    
-//    final Dialog dialog = webView.getDialog(mContext);
-//    dialog.show();
-//    
-//    View mainView = View.inflate(mContext,R.layout.layout_login_dialog,null);
-//    RelativeLayout relativeWrapper = (RelativeLayout) mainView.findViewById(R.id.realtive_webview_wrapper);
-//    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//    relativeWrapper.addView(webView, lp);
-//    
-//    dialog.setContentView(mainView);
-//    
-//    webView.setWebViewAccessInvoke(new IOnWebViewAccessInvoke() {
-//        @Override
-//        public void onWebViewAccessInvoke(String url) {
-//            
-//            dialog.dismiss();
-//            
-//            loadURLAuthorizationCode(url, onAccessTokenResponse);
-//            
-//        }
-//    });
+    NSString *replaceCallBackUrl = [SPARK_BOGUS_REDIRECT_URL stringByReplacingOccurrencesOfString:@"[MY-WEB-ADDRESS-FOR-CALLBACK]" withString:SPARK_CALLBACK_SITE_NAME];
+    [initialUrl appendString:[NSString stringWithFormat:@"%@=%@", SPARK_LOGIN_REQUEST_PARAM_REDIRECT_URI, replaceCallBackUrl]];
+
+    _webview = [[UIWebView alloc] initWithFrame:parent.view.bounds];
+
+    if ([[SparkLogicManager sharedInstance] debugMode]) {
+        NSLog(@"Logging into Spark with URL:%@", initialUrl);
+    }
+
+    [parent.view addSubview:_webview];
+    
+    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:initialUrl]];
+    [_webview loadRequest:request];
+    [_webview setDelegate:self];
 }
 
--(void)loadURLAuthorizationCode:(NSString*)url accessTokenResponse:(id<SparkResponseDelegate>) onAccessTokenResponse {
+-(void)loadURLAuthorizationCode:(NSString*)url{
     
-//    if (url.length() > 0) {
-//        Uri returnURL = Uri.parse(url);
-//        if (returnURL != null) {
-//            String code = returnURL.getQueryParameter(SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE);
-//            if (code != null) {
-//                getAccessToken(new AuthCodeRequest(code), onAccessTokenResponse);
-//            }
-//        }
-//    }
+    if ([url length] > 0) {
+        NSRange range = [url rangeOfString:@"code="];
+        if (range.location  != NSNotFound) {
+            NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+            for (NSString *param in [url componentsSeparatedByString:@"&"]) {
+                NSArray *elts = [param componentsSeparatedByString:@"="];
+                if([elts count] < 2)
+                    continue;
+                [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+            }
+            
+            for (NSString * key in [params allKeys]) {
+                if ([key isEqualToString:@"code"]) {
+                    AuthCodeRequest * acr = [[AuthCodeRequest alloc] init];
+                    acr.autoCode = [params objectForKey:@"code"];
+                    
+                    [self getAccessToken:acr
+                            succsesBlock:_succsesBlock
+                            failureBlock:_failBlock];
+                }
+            }
+            
+            
+            [_webview removeFromSuperview];
+            _webview = nil;
+        }
+    }
+}
+
+//-(void)onAfterParsing:(NSDictionary*)json{
+//    [[SparkLogicManager sharedInstance] setAccessToken:[json objectForKey:@"access_token"]];
+//    [[SparkLogicManager sharedInstance] setRefreshToken:[json objectForKey:@"refresh_token"]];
+//    [[SparkLogicManager sharedInstance] setAuthorizationType:SPARK_AUTHORIZATION_TOKEN_TYPE_GUEST];
+//    [[SparkLogicManager sharedInstance] setExpiresAt:[[json objectForKey:@"expires_at"] longValue]];
+//}
+
+#pragma mark- UIWebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self loadURLAuthorizationCode:[webView.request.URL absoluteString]];
 }
 
 @end

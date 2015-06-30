@@ -9,6 +9,10 @@
 #ifndef spark_ios_sdk_Constants_h
 #define spark_ios_sdk_Constants_h
 
+#define SPARK_API_KEY @"mbrTS20Y8BFH7a0O3484B1QjvJQ93tgp"
+#define SPARK_API_SECRET @"s0PAMowXbAffpNvG"
+#define SPARK_CALLBACK_SITE_NAME @"autodesk"
+
 static const NSString* SDK_VERSION	= @"1.0";
 
 // Spark Authorization types
@@ -26,7 +30,7 @@ static const int SPARK_ENV_TYPE_SANBOX = 0;
 static const int SPARK_ENV_TYPE_PRODUCTION = 1;
 
 // Base Urls
-static const NSString* SPARK_SCHEME = @"https";
+static NSString* SPARK_SCHEME = @"https";
 static const NSString* SPARK_SANDBOX_AUTHORITY_AND_PATH = @"sandbox.spark.autodesk.com/api/v1";
 static const NSString* SPARK_PRODUCTION_AUTHORITY_AND_PATH = @"api.spark.autodesk.com/api/v1";
 static NSString* SPARK_BASE_URL_SANDBOX = @"https://sandbox.spark.autodesk.com/api/v1";
@@ -40,7 +44,7 @@ static const NSString* API_GET_REFRESH_TOKEN = @"oauth/refreshtoken";
 static const NSString* API_GET_ASSETS = @"assets";
 static const NSString* API_GET_MEMBERS_ASSETS = @"members/{{MID}}/assets";
 static const NSString* API_GET_MEMBERS = @"members";
-static const NSString* API_AUTHORIZE = @"oauth/authorize";
+static NSString* API_AUTHORIZE = @"oauth/authorize";
 static const NSString* API_CREATE_FILE = @"files/upload";
 static const NSString* API_PRINTER_REGISTER = @"print/printers/register";
 static const NSString* API_PRINTER_UNREGISTER = @"print/printers";
@@ -63,13 +67,13 @@ static NSString* SHARED_PREFERENCE_DEBUG_MODE = @"debug_mode";
 static NSString* SHARED_PREFERENCE_BASE_URL = @"base_url";
 
 // Spark Login - Query Params
-static const NSString* SPARK_LOGIN_REQUEST_PARAM_RESPONSE_TYPE = @"response_type";
-static const NSString* SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE = @"code";
+static NSString* SPARK_LOGIN_REQUEST_PARAM_RESPONSE_TYPE = @"response_type";
+static NSString* SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE = @"code";
 static const NSString* SPARK_LOGIN_REQUEST_PARAM_CLIENT_ID = @"client_id";
 static const NSString* SPARK_LOGIN_REQUEST_PARAM_REDIRECT_URI = @"redirect_uri";
 
 // Spark Login - Redirect URL
-static const NSString* SPARK_BOGUS_REDIRECT_URL = @"http://www.[MY-WEB-ADDRESS-FOR-CALLBACK].com";
+static NSString* SPARK_BOGUS_REDIRECT_URL = @"http://www.[MY-WEB-ADDRESS-FOR-CALLBACK].com";
 
 // Spark Exceptions
 static const NSString* SPARK_EXCEPTION_CONFIGURATION_ERROR = @"Configuration Error.";

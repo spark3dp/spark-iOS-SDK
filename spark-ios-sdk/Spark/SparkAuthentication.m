@@ -35,9 +35,10 @@ static SparkAuthentication *sharedInstance = nil;
 
 
 - (void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock
-                     failure:(SparkAuthenticationFailureBlock)failBlock{
+                     failure:(SparkAuthenticationFailureBlock)failBlock
+        parentViewController:(UIViewController*)parent{
     
-    [_networkUtils getAuthorizationCode:succsesBlock failure:failBlock];
+    [_networkUtils getAuthorizationCode:succsesBlock failure:failBlock parentViewController:parent];
 }
 
 

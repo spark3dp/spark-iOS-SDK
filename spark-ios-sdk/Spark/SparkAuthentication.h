@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "Protocols.h"
 #import "AccessTokenResponse.h"
 #import "NetworkUtils.h"
@@ -18,7 +19,9 @@
 
 + (SparkAuthentication *)sharedInstance;
 - (void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
-- (void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+- (void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock
+                     failure:(SparkAuthenticationFailureBlock)failBlock
+        parentViewController:(UIViewController*)parent;
 
 
 @end

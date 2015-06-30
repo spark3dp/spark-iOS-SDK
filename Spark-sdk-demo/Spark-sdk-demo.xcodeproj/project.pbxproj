@@ -28,6 +28,8 @@
 		931747731B3FE2F3000519A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 931747711B3FE2F3000519A3 /* Main.storyboard */; };
 		931747761B3FE416000519A3 /* SparkAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 931747751B3FE416000519A3 /* SparkAuthentication.m */; };
 		9317477A1B400C2B000519A3 /* AccessTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 931747791B400C2B000519A3 /* AccessTokenResponse.m */; };
+		932A2B441B42D8780013C47A /* AccessTokenTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 932A2B431B42D8780013C47A /* AccessTokenTask.m */; };
+		932A2B481B42E94D0013C47A /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 932A2B471B42E94D0013C47A /* NSData+MPBase64.m */; };
 		933EC4081B3BF65E009C5CEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4071B3BF65E009C5CEB /* main.m */; };
 		933EC40B1B3BF65E009C5CEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC40A1B3BF65E009C5CEB /* AppDelegate.m */; };
 		933EC40E1B3BF65E009C5CEB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC40D1B3BF65E009C5CEB /* FirstViewController.m */; };
@@ -90,6 +92,10 @@
 		931747751B3FE416000519A3 /* SparkAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkAuthentication.m; sourceTree = "<group>"; };
 		931747781B400C2B000519A3 /* AccessTokenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenResponse.h; sourceTree = "<group>"; };
 		931747791B400C2B000519A3 /* AccessTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
+		932A2B421B42D8770013C47A /* AccessTokenTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenTask.h; sourceTree = "<group>"; };
+		932A2B431B42D8780013C47A /* AccessTokenTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessTokenTask.m; sourceTree = "<group>"; };
+		932A2B461B42E94D0013C47A /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
+		932A2B471B42E94D0013C47A /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
 		933EC4021B3BF65E009C5CEB /* Spark-sdk-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spark-sdk-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		933EC4061B3BF65E009C5CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		933EC4071B3BF65E009C5CEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 			children = (
 				9317474C1B3C3BFA000519A3 /* GuestTokenTask.h */,
 				9317474D1B3C3BFA000519A3 /* GuestTokenTask.m */,
+				932A2B421B42D8770013C47A /* AccessTokenTask.h */,
+				932A2B431B42D8780013C47A /* AccessTokenTask.m */,
 			);
 			path = Autentication;
 			sourceTree = "<group>";
@@ -247,6 +255,8 @@
 		9317475B1B3C3BFA000519A3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				932A2B461B42E94D0013C47A /* NSData+MPBase64.h */,
+				932A2B471B42E94D0013C47A /* NSData+MPBase64.m */,
 				9317475C1B3C3BFA000519A3 /* Constants.h */,
 				9317475D1B3C3BFA000519A3 /* Utils.h */,
 				9317475E1B3C3BFA000519A3 /* Utils.m */,
@@ -426,6 +436,7 @@
 				9317476E1B3C3BFA000519A3 /* SparkManager.m in Sources */,
 				931747641B3C3BFA000519A3 /* MemberRequest.m in Sources */,
 				931747601B3C3BFA000519A3 /* AuthCodeRequest.m in Sources */,
+				932A2B441B42D8780013C47A /* AccessTokenTask.m in Sources */,
 				9317476A1B3C3BFA000519A3 /* GuestTokenTask.m in Sources */,
 				931747651B3C3BFA000519A3 /* PrinterJobStatusRequest.m in Sources */,
 				931747611B3C3BFA000519A3 /* CommandSendRequest.m in Sources */,
@@ -438,6 +449,7 @@
 				931747691B3C3BFA000519A3 /* SparkSession.m in Sources */,
 				9317476D1B3C3BFA000519A3 /* BaseNetworkWrapper.m in Sources */,
 				9317475F1B3C3BFA000519A3 /* AssetRequest.m in Sources */,
+				932A2B481B42E94D0013C47A /* NSData+MPBase64.m in Sources */,
 				931747681B3C3BFA000519A3 /* RefreshAccessTokenRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

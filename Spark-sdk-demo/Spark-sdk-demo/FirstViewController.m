@@ -40,12 +40,13 @@
 }
 
 - (IBAction)grantSparkAccessTokenPressed:(id)sender {
+    
     [[SparkAuthentication sharedInstance] getAuthorizationCode:^(AccessTokenResponse *responseObject) {
         [self.accessTokenTextField setText:responseObject.accessToken];
         [self updateSessionDetails];
     } failure:^(NSString *error) {
         [self.accessTokenTextField setText:error];
-    }];
+    } parentViewController:self];
 }
 
 -(void)updateSessionDetails{

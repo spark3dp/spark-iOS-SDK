@@ -8,21 +8,30 @@
 
 #import "BaseNetworkWrapper.h"
 #import "GuestTokenTask.h"
+#import "AccessTokenTask.h"
 
 @implementation BaseNetworkWrapper
 //-------------------------------------------------
 //SparkAuthenticationDelegate
 //-------------------------------------------------
--(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock{
+-(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock
+             failureBlock:(SparkAuthenticationFailureBlock)failBlock{
+    
     GuestTokenTask * gtt = [[GuestTokenTask alloc] initGuestTokenTask:succsesBlock failure:failBlock];
     [gtt executeApiCall];
 }
 
--(void)sparkGetAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>)onAccessTokenResponse{
-    //new AccessTokenTask(authCode,onAccessTokenResponse).execute(getQueue());
+-(void)sparkGetAccessToken:(AuthCodeRequest*)authCode
+              succsesBlock:(SparkAuthenticationSuccessBlock)succsesBlock
+             failureBlock:(SparkAuthenticationFailureBlock)failBlock{
+    AccessTokenTask *att = [[AccessTokenTask alloc] initAccessTokenTask:authCode succsesBlock:succsesBlock failureBlock:failBlock];
+    [att executeApiCall];
+
 }
 
 -(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse{
+    
+   
     //new RefreshTokenTask(refreshCode,onRefreshTokenResponse).execute(getQueue());
 }
 

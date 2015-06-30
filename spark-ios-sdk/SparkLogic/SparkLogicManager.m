@@ -8,6 +8,7 @@
 
 #import "SparkLogicManager.h"
 #import "Constants.h"
+#import "NSData+MPBase64.h"
 
 @implementation SparkLogicManager
 
@@ -112,7 +113,7 @@ static SparkLogicManager *sharedInstance = nil;
 -(void)setAppKeySecretBase64{
     NSString * textToEncode = [NSString stringWithFormat:@"%@:%@",self.appKey, self.appSecret];
     NSData *data = [textToEncode dataUsingEncoding:NSUTF8StringEncoding];
-    _appKeySecretBase64 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    _appKeySecretBase64 = [data mp_base64EncodedString];
     
     NSLog(@"Spark Config BASE64 : %@", self.appKeySecretBase64);
 }

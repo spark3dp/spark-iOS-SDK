@@ -10,9 +10,6 @@
 #import "Constants.h"
 #import "SparkManager.h"
 
-#define SPARK_API_KEY @"mbrTS20Y8BFH7a0O3484B1QjvJQ93tgp"
-#define SPARK_API_SECRET @"s0PAMowXbAffpNvG"
-
 @interface AppDelegate ()
 
 @end

@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Protocols.h"
 
-@interface BaseNetworkWrapper : NSObject <SparkAuthenticationDelegate, SparkDriveDelegate, SparkPrintDelegate>
+@interface BaseNetworkWrapper : NSObject <SparkDriveDelegate, SparkPrintDelegate>
 
--(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+-(void)sparkGetGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock
+             failureBlock:(SparkAuthenticationFailureBlock)failBlock;
+
+-(void)sparkGetAccessToken:(AuthCodeRequest*)authCode
+              succsesBlock:(SparkAuthenticationSuccessBlock)succsesBlock
+              failureBlock:(SparkAuthenticationFailureBlock)failBlock;
 @end
