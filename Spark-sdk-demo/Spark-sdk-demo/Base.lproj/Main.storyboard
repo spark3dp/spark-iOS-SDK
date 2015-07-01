@@ -74,6 +74,7 @@
                                     <constraint firstAttribute="width" constant="300" id="esI-iW-IZT"/>
                                     <constraint firstAttribute="height" constant="30" id="sCE-0h-ANy"/>
                                 </constraints>
+                                <color key="textColor" red="1" green="0.12156862745098039" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -105,7 +106,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Grant Spark Access Token">
-                                    <color key="titleColor" red="0.0" green="0.54509806630000002" blue="0.17254902420000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleColor" red="1" green="0.1215686275" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -120,7 +121,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Grant Spark Guest Token">
-                                    <color key="titleColor" red="0.0" green="0.54509806632995605" blue="0.17254902422428131" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleColor" red="1" green="0.1215686275" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
