@@ -12,6 +12,7 @@
 
 @interface NetworkUtils : NSObject <UIWebViewDelegate>{
     UIWebView * _webview;
+    UIView * _bgView;
     SparkAuthenticationSuccessBlock _succsesBlock;
     SparkAuthenticationFailureBlock _failBlock;
 }

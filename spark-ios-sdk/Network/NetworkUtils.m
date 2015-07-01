@@ -19,6 +19,7 @@
 #import "Constants.h"
 #import "RefreshAccessTokenRequest.h"
 #import "SparkLogicManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NetworkUtils
 
@@ -244,17 +245,41 @@ typedef enum ActionType
     NSString *replaceCallBackUrl = [SPARK_BOGUS_REDIRECT_URL stringByReplacingOccurrencesOfString:@"[MY-WEB-ADDRESS-FOR-CALLBACK]" withString:SPARK_CALLBACK_SITE_NAME];
     [initialUrl appendString:[NSString stringWithFormat:@"%@=%@", SPARK_LOGIN_REQUEST_PARAM_REDIRECT_URI, replaceCallBackUrl]];
 
-    _webview = [[UIWebView alloc] initWithFrame:parent.view.bounds];
+    _bgView = [[UIView alloc] initWithFrame:parent.view.bounds];
+    [_bgView setBackgroundColor:[UIColor blackColor]];
+    [_bgView setAlpha:0.0];
+    [parent.view addSubview:_bgView];
+
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 300, 350)];
+    _webview.center = parent.view.center;
+    _webview.layer.borderColor = [UIColor blackColor].CGColor;
+    _webview.layer.borderWidth = 3.0f;
 
     if ([[SparkLogicManager sharedInstance] debugMode]) {
         NSLog(@"Logging into Spark with URL:%@", initialUrl);
     }
 
-    [parent.view addSubview:_webview];
     
     NSURLRequest * request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:initialUrl]];
     [_webview loadRequest:request];
     [_webview setDelegate:self];
+    _webview.transform = CGAffineTransformMakeScale(0.01, 0.01);
+    [parent.view addSubview:_webview];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [_bgView setAlpha:0.7];
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+             usingSpringWithDamping:0.6
+              initialSpringVelocity:0.8
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             _webview.transform = CGAffineTransformIdentity;
+                         } completion:nil];
+        
+    }];
 }
 
 -(void)loadURLAuthorizationCode:(NSString*)url{
@@ -281,19 +306,12 @@ typedef enum ActionType
                 }
             }
             
-            
+            [_bgView removeFromSuperview];
             [_webview removeFromSuperview];
             _webview = nil;
         }
     }
 }
-
-//-(void)onAfterParsing:(NSDictionary*)json{
-//    [[SparkLogicManager sharedInstance] setAccessToken:[json objectForKey:@"access_token"]];
-//    [[SparkLogicManager sharedInstance] setRefreshToken:[json objectForKey:@"refresh_token"]];
-//    [[SparkLogicManager sharedInstance] setAuthorizationType:SPARK_AUTHORIZATION_TOKEN_TYPE_GUEST];
-//    [[SparkLogicManager sharedInstance] setExpiresAt:[[json objectForKey:@"expires_at"] longValue]];
-//}
 
 #pragma mark- UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

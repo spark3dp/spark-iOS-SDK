@@ -35,7 +35,7 @@
     [urlStr appendString:@"/"];
     [urlStr appendString:API_GET_GUEST_TOKEN];
     
-    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=authorization_code&code=%@&response_type=code&redirect_uri=http://www.autodesk.com", _authCode.autoCode];
+    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=authorization_code&code=%@&response_type=code&redirect_uri=http://www.%@.com", _authCode.autoCode, SPARK_CALLBACK_SITE_NAME];
     
     NSData * encodeData = [httpPostBody dataUsingEncoding:NSUTF8StringEncoding];
     
