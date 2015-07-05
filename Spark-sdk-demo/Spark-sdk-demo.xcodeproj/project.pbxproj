@@ -36,6 +36,9 @@
 		933EC4111B3BF65E009C5CEB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4101B3BF65E009C5CEB /* SecondViewController.m */; };
 		933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933EC4151B3BF65E009C5CEB /* Images.xcassets */; };
 		933EC4251B3BF65E009C5CEB /* Spark_sdk_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4241B3BF65E009C5CEB /* Spark_sdk_demoTests.m */; };
+		93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007151B492ADB00446F08 /* UploadFileTask.m */; };
+		93F007191B49467300446F08 /* SparkDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007181B49467300446F08 /* SparkDrive.m */; };
+		93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0071B1B494AFF00446F08 /* FileResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,12 @@
 		933EC41E1B3BF65E009C5CEB /* Spark-sdk-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spark-sdk-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		933EC4231B3BF65E009C5CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		933EC4241B3BF65E009C5CEB /* Spark_sdk_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spark_sdk_demoTests.m; sourceTree = "<group>"; };
+		93F007141B492ADB00446F08 /* UploadFileTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadFileTask.h; path = Drive/UploadFileTask.h; sourceTree = "<group>"; };
+		93F007151B492ADB00446F08 /* UploadFileTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadFileTask.m; path = Drive/UploadFileTask.m; sourceTree = "<group>"; };
+		93F007171B49467300446F08 /* SparkDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkDrive.h; sourceTree = "<group>"; };
+		93F007181B49467300446F08 /* SparkDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkDrive.m; sourceTree = "<group>"; };
+		93F0071A1B494AFF00446F08 /* FileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileResponse.h; sourceTree = "<group>"; };
+		93F0071B1B494AFF00446F08 /* FileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +204,8 @@
 			children = (
 				931747781B400C2B000519A3 /* AccessTokenResponse.h */,
 				931747791B400C2B000519A3 /* AccessTokenResponse.m */,
+				93F0071A1B494AFF00446F08 /* FileResponse.h */,
+				93F0071B1B494AFF00446F08 /* FileResponse.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 		9317474A1B3C3BFA000519A3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				93F007131B492AA500446F08 /* Drive */,
 				9317474B1B3C3BFA000519A3 /* Autentication */,
 				9317474E1B3C3BFA000519A3 /* BaseSparkRequest.h */,
 				9317474F1B3C3BFA000519A3 /* BaseSparkRequest.m */,
@@ -239,6 +251,8 @@
 				931747571B3C3BFA000519A3 /* SparkManager.m */,
 				931747741B3FE416000519A3 /* SparkAuthentication.h */,
 				931747751B3FE416000519A3 /* SparkAuthentication.m */,
+				93F007171B49467300446F08 /* SparkDrive.h */,
+				93F007181B49467300446F08 /* SparkDrive.m */,
 			);
 			path = Spark;
 			sourceTree = "<group>";
@@ -324,6 +338,15 @@
 				933EC4231B3BF65E009C5CEB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93F007131B492AA500446F08 /* Drive */ = {
+			isa = PBXGroup;
+			children = (
+				93F007141B492ADB00446F08 /* UploadFileTask.h */,
+				93F007151B492ADB00446F08 /* UploadFileTask.m */,
+			);
+			name = Drive;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				931747631B3C3BFA000519A3 /* FileRequest.m in Sources */,
+				93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */,
 				931747701B3C3BFA000519A3 /* Utils.m in Sources */,
 				9317477A1B400C2B000519A3 /* AccessTokenResponse.m in Sources */,
 				931747661B3C3BFA000519A3 /* PrinterRegisterRequest.m in Sources */,
@@ -443,8 +467,10 @@
 				933EC40E1B3BF65E009C5CEB /* FirstViewController.m in Sources */,
 				9317476B1B3C3BFA000519A3 /* BaseSparkRequest.m in Sources */,
 				931747621B3C3BFA000519A3 /* CreateJobRequest.m in Sources */,
+				93F007191B49467300446F08 /* SparkDrive.m in Sources */,
 				9317476F1B3C3BFA000519A3 /* SparkLogicManager.m in Sources */,
 				933EC4081B3BF65E009C5CEB /* main.m in Sources */,
+				93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */,
 				9317476C1B3C3BFA000519A3 /* NetworkUtils.m in Sources */,
 				931747691B3C3BFA000519A3 /* SparkSession.m in Sources */,
 				9317476D1B3C3BFA000519A3 /* BaseNetworkWrapper.m in Sources */,

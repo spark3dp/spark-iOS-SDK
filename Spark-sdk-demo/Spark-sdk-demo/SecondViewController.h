@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    UIImage * _selecteImage;
+    NSString * _filePath;
+}
 
-
+-(IBAction)selectFile:(id)sender;
+-(IBAction)uploadFile:(id)sender;
 @end
 

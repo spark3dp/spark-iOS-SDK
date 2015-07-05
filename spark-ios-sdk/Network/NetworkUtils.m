@@ -30,7 +30,7 @@ typedef enum ActionType
     AT_SPARK_GET_MEMBER_ASSETS,
     AT_SPARK_GET_MEMBER,
     AT_SPARK_CREATE_ASSET,
-    AT_SPARK_CREATE_FILE,
+    AT_SPARK_UPLOAD_FILE,
     AT_SPARK_REGISTER_PRINTER,
     AT_SPARK_UNREGISTER_PRINTER,
     AT_SPARK_CREATE_JOB,
@@ -72,19 +72,28 @@ typedef enum ActionType
     [self initAndShowWebviewWithParent:parent];
 }
 
--(void)getRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse {
+-(void)getRefreshToken:(RefreshAccessTokenRequest*)refreshCode
+                success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure {
     
     //[_baseNetworkWrapper sparkGetRefreshToken:refreshCode accessTokenResponse:onRefreshTokenResponse];
 }
 
--(void)callWithUpdateRefreshToken:(ActionType)action withObject:(id)object responde:(id<SparkResponseDelegate>) onResponse {
+-(void)callWithUpdateRefreshToken:(ActionType)action
+                       withObject:(id)object
+                          success:(SparkSuccessBlock)success
+                          failure:(SparkFailureBlock)failure {
     // override the flag
-    [self callWithUpdateRefreshToken:action withObject:object responde:onResponse checkToken:NO];
+    [self callWithUpdateRefreshToken:action withObject:object success:success failure:failure checkToken:NO];
 }
      
--(void)callWithUpdateRefreshToken:(ActionType)action withObject:(id)object responde:(id<SparkResponseDelegate>)onResponse checkToken:(BOOL)checkToken {
+-(void)callWithUpdateRefreshToken:(ActionType)action
+                       withObject:(id)object
+                          success:(SparkSuccessBlock)success
+                          failure:(SparkFailureBlock)failure
+                       checkToken:(BOOL)checkToken {
     
-    if (checkToken && [self isGuestTokenType:onResponse]) {
+    if (checkToken && [self isGuestTokenTypeSuccess:success failure:failure]) {
         //on guest token type raise error and quit
         return;
     }
@@ -93,7 +102,7 @@ typedef enum ActionType
        
         RefreshAccessTokenRequest * ratr = [[RefreshAccessTokenRequest alloc] initWithRefreshCode:[[SparkLogicManager sharedInstance] refreshToken]];
         
-        [self getRefreshToken:ratr accessTokenResponse:onResponse];
+        [self getRefreshToken:ratr success:success failure:failure];
         
 //        // update call
 //        getRefreshToken(new RefreshAccessTokenRequest(MemoryManager.getInstance().getRefreshToken()), new ISparkResponse<AccessTokenResponse>() {
@@ -131,37 +140,37 @@ typedef enum ActionType
         // regular call
         switch (action) {
             case AT_SPARK_GET_ASSET:
-                [_baseNetworkWrapper sparkGetAsset:object assetResponse:onResponse];
+                [_baseNetworkWrapper sparkGetAsset:object success:success failure:failure];
                 break;
             case AT_SPARK_GET_ASSETS:
-                [_baseNetworkWrapper sparkGetAssets:onResponse];
+                [_baseNetworkWrapper sparkGetAssetsSuccess:success failure:failure];
                 break;
             case AT_SPARK_GET_MEMBER_ASSETS:
-                [_baseNetworkWrapper sparkGetMemberAssets:object assetsListResponse:onResponse];
+                [_baseNetworkWrapper sparkGetMemberAssets:object success:success failure:failure];
                 break;
             case AT_SPARK_GET_MEMBER:
-                [_baseNetworkWrapper sparkGetMember:object memberResponse:onResponse];
+                [_baseNetworkWrapper sparkGetMember:object success:success failure:failure];
                 break;
             case AT_SPARK_CREATE_ASSET:
-                [_baseNetworkWrapper sparkCreateAsset:object assetResponse:onResponse];
+                [_baseNetworkWrapper sparkCreateAsset:object success:success failure:failure];
                 break;
-            case AT_SPARK_CREATE_FILE:
-                [_baseNetworkWrapper sparkCreateFile:object filesResponse:onResponse];
+            case AT_SPARK_UPLOAD_FILE:
+                [_baseNetworkWrapper sparkCreateFile:object success:success failure:failure];
                 break;
             case AT_SPARK_REGISTER_PRINTER:
-                [_baseNetworkWrapper sparkRegisterPrinter:object printerRegisterResponse:onResponse];
+                [_baseNetworkWrapper sparkRegisterPrinter:object success:success failure:failure];
                 break;
             case AT_SPARK_UNREGISTER_PRINTER:
-                [_baseNetworkWrapper sparkUnregisterPrinter:object object:onResponse];
+                [_baseNetworkWrapper sparkUnregisterPrinter:object success:success failure:failure];
                 break;
             case AT_SPARK_CREATE_JOB:
-                [_baseNetworkWrapper sparkCreateJob:object createJobResponse:onResponse];
+                [_baseNetworkWrapper sparkCreateJob:object success:success failure:failure];
                 break;
             case  AT_SPARK_COMMAND_SEND:
-                [_baseNetworkWrapper sparkCommandSend:object commandSendResponse:onResponse];
+                [_baseNetworkWrapper sparkCommandSend:object success:success failure:failure];
                 break;
             case AT_SPARK_JOB_STATUS:
-                [_baseNetworkWrapper sparkJobStatus:object printerJobStatusResponse:onResponse];
+                [_baseNetworkWrapper sparkJobStatus:object success:success failure:failure];
                 break;
             default:
                 break;
@@ -172,62 +181,86 @@ typedef enum ActionType
 
 // API that updates the Access Token when expire
 //----------------------------------------------
--(void)getAsset:(AssetRequest*)asset assetResponse:(id<SparkResponseDelegate>) onAssetResponse {
+-(void)getAsset:(AssetRequest*)asset
+        success:(SparkSuccessBlock)success
+        failure:(SparkFailureBlock)failure {
+    
     // Call the class that encapsulate the call
-    [self callWithUpdateRefreshToken:AT_SPARK_GET_ASSET withObject:asset responde:onAssetResponse] ;
+    [self callWithUpdateRefreshToken:AT_SPARK_GET_ASSET withObject:asset success:success failure:failure] ;
 }
 
--(void)getAssetsAssetsListResponse:(id<SparkResponseDelegate>)onAssetResponse {
+-(void)getAssetsListSuccess:(SparkSuccessBlock)success
+                    failure:(SparkFailureBlock)failure {
     
-    [self callWithUpdateRefreshToken:AT_SPARK_GET_ASSETS withObject:nil responde:onAssetResponse] ;
+    [self callWithUpdateRefreshToken:AT_SPARK_GET_ASSETS withObject:nil success:success failure:failure] ;
 }
 
--(void)getMemberAssets:(MemberRequest*)member assetsListResponse:(id<SparkResponseDelegate>) onAssetResponse {
+-(void)getMemberAssets:(MemberRequest*)member
+               success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure {
     
-    [self callWithUpdateRefreshToken:AT_SPARK_GET_MEMBER_ASSETS withObject:member responde:onAssetResponse] ;
+    [self callWithUpdateRefreshToken:AT_SPARK_GET_MEMBER_ASSETS withObject:member success:success failure:failure] ;
 }
 
--(void)getMember:(MemberRequest*)member memberResponse:(id<SparkResponseDelegate>) onMemberResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_GET_MEMBER withObject:member responde:onMemberResponse] ;
+-(void)getMember:(MemberRequest*)member
+         success:(SparkSuccessBlock)success
+         failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_GET_MEMBER withObject:member success:success failure:failure] ;
 }
 
--(BOOL)isGuestTokenType:(id<SparkResponseDelegate>) onResponse {
+-(BOOL)isGuestTokenTypeSuccess:(SparkSuccessBlock)success
+                       failure:(SparkFailureBlock)failure {
     if (SPARK_AUTHORIZATION_TOKEN_TYPE_REGULAR != [[SparkLogicManager sharedInstance] authorizationType]) {
         // auth 2.0 required and not guest token
         
-        [onResponse onSparkFailure:SPARK_EXCEPTION_ACCESS_TOKEN_REQUIRED];
+        failure(SPARK_EXCEPTION_ACCESS_TOKEN_REQUIRED);
         return YES;
     }
     
     return NO;
 }
 
--(void)createAsset:(AssetRequest*)asset assetResponse:(id<SparkResponseDelegate>) onCreateAssetResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_CREATE_ASSET withObject:asset responde:onCreateAssetResponse checkToken:YES];
+-(void)createAsset:(AssetRequest*)asset
+           success:(SparkSuccessBlock)success
+           failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_CREATE_ASSET withObject:asset success:success failure:failure checkToken:YES];
 }
 
--(void)createFile:(FileRequest*)file filesResponse:(id<SparkResponseDelegate>) onSparkResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_CREATE_FILE withObject:file responde:onSparkResponse checkToken:YES];
+-(void)uploadFile:(FileRequest*)file
+          success:(SparkSuccessBlock)success
+          failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_UPLOAD_FILE withObject:file success:success failure:failure checkToken:YES];
 }
 
--(void)registerPrinter:(PrinterRegisterRequest*)printer printerRegisterResponse:(id<SparkResponseDelegate>) onSparkResponse {
-     [self callWithUpdateRefreshToken:AT_SPARK_REGISTER_PRINTER withObject:printer responde:onSparkResponse checkToken:YES];
+-(void)registerPrinter:(PrinterRegisterRequest*)printer
+               success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure {
+    
+     [self callWithUpdateRefreshToken:AT_SPARK_REGISTER_PRINTER withObject:printer success:success failure:failure checkToken:YES];
 }
      
--(void)unregisterPrinter:(PrinterUnregisterRequest*)printer object:(id<SparkResponseDelegate>) onSparkResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_UNREGISTER_PRINTER withObject:printer responde:onSparkResponse checkToken:YES];
+-(void)unregisterPrinter:(PrinterUnregisterRequest*)printer
+                 success:(SparkSuccessBlock)success
+                 failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_UNREGISTER_PRINTER withObject:printer success:success failure:failure checkToken:YES];
 }
 
--(void)createJob:(CreateJobRequest*) printerJob createJobResponse:(id<SparkResponseDelegate>) onSparkResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_CREATE_JOB withObject:printerJob responde:onSparkResponse checkToken:YES];
+-(void)createJob:(CreateJobRequest*) printerJob
+         success:(SparkSuccessBlock)success
+         failure:(SparkFailureBlock)failure  {
+    [self callWithUpdateRefreshToken:AT_SPARK_CREATE_JOB withObject:printerJob success:success failure:failure checkToken:YES];
 }
 
--(void)commandSend:(CommandSendRequest*)command commandSendResponse:(id<SparkResponseDelegate>) onSparkResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_COMMAND_SEND withObject:command responde:onSparkResponse checkToken:YES];
+-(void)commandSend:(CommandSendRequest*)command
+           success:(SparkSuccessBlock)success
+           failure:(SparkFailureBlock)failure{
+    [self callWithUpdateRefreshToken:AT_SPARK_COMMAND_SEND withObject:command success:success failure:failure checkToken:YES];
 }
 
--(void)jobStatus:(PrinterJobStatusRequest*)jobStatus printerJobStatusResponse:(id<SparkResponseDelegate>) onSparkResponse {
-    [self callWithUpdateRefreshToken:AT_SPARK_JOB_STATUS withObject:jobStatus responde:onSparkResponse checkToken:YES];
+-(void)jobStatus:(PrinterJobStatusRequest*)jobStatus
+         success:(SparkSuccessBlock)success
+         failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_JOB_STATUS withObject:jobStatus success:success failure:failure checkToken:YES];
 }
 
 -(void)initAndShowWebviewWithParent:(UIViewController*)parent{
@@ -315,7 +348,6 @@ typedef enum ActionType
 
 #pragma mark- UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
     [self loadURLAuthorizationCode:[webView.request.URL absoluteString]];
 }
 

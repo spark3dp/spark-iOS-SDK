@@ -20,61 +20,13 @@
 #import "CommandSendRequest.h"
 #import "PrinterJobStatusRequest.h"
 #import "AccessTokenResponse.h"
+#import "FileResponse.h"
 
 typedef void(^SparkAuthenticationSuccessBlock)(AccessTokenResponse* responseObject);
 typedef void(^SparkAuthenticationFailureBlock)(NSString* error);
+typedef void(^SparkDriveSuccessBlock)(FileResponse* responseObject);
+typedef void(^SparkDriveFailureBlock)(NSString* error);
+typedef void(^SparkSuccessBlock)(id responseObject);
+typedef void(^SparkFailureBlock)(NSString* error);
 
-@protocol SparkResponseDelegate <NSObject>
-@optional
-
--(void)onSparkSuccess:(id)responseObject;
-
--(void)onSparkFailure:(NSString*)errorMessage;
-
-@end
-
-
-@protocol SparkAuthenticationDelegate <NSObject>
-@optional
-
--(void)sparkGetGuestToken:(id<SparkResponseDelegate>) onGuestTokenResponse;
-
--(void)sparkGetAccessToken:(AuthCodeRequest*)authCode accessTokenResponse:(id<SparkResponseDelegate>)onAccessTokenResponse;
-
--(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse;
-
-@end
-
-
-@protocol SparkDriveDelegate <NSObject>
-@optional
-
--(void)sparkGetAsset:(AssetRequest*)asset assetResponse:(id<SparkResponseDelegate>) onAssetResponse;
-
--(void)sparkGetAssets:(id<SparkResponseDelegate>) onAssetResponse;
-
--(void)sparkGetMemberAssets:(MemberRequest*) member assetsListResponse:(id<SparkResponseDelegate>) onAssetsResponse;
-
--(void)sparkGetMember:(MemberRequest*) member memberResponse:(id<SparkResponseDelegate>) onMemberResponse;
-
--(void)sparkCreateAsset:(AssetRequest*) asset assetResponse:(id<SparkResponseDelegate>) onCreateAssetResponse;
-
--(void)sparkCreateFile:(FileRequest*) file filesResponse:(id<SparkResponseDelegate>) onSparkResponse;
-
-@end
-
-@protocol SparkPrintDelegate <NSObject>
-@optional
-
--(void)sparkRegisterPrinter:(PrinterRegisterRequest*)printer printerRegisterResponse:(id<SparkResponseDelegate>) onSparkResponse;
-
--(void)sparkUnregisterPrinter:(PrinterUnregisterRequest*)printer object:(id<SparkResponseDelegate>) onSparkResponse;
-
--(void)sparkCreateJob:(CreateJobRequest*)printerJob createJobResponse:(id<SparkResponseDelegate>) onSparkResponse;
-
--(void)sparkCommandSend:(CommandSendRequest*)command commandSendResponse:(id<SparkResponseDelegate>) onSparkResponse;
-
--(void)sparkJobStatus:(PrinterJobStatusRequest*)job printerJobStatusResponse:(id<SparkResponseDelegate>) onSparkResponse;
-
-@end
 #endif

@@ -29,7 +29,9 @@
 
 }
 
--(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode accessTokenResponse:(id<SparkResponseDelegate>) onRefreshTokenResponse{
+-(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode
+                    success:(SparkSuccessBlock)success
+                    failure:(SparkFailureBlock)failure{
     
    
     //new RefreshTokenTask(refreshCode,onRefreshTokenResponse).execute(getQueue());
@@ -38,50 +40,71 @@
 //-------------------------------------------------
 //SparkDriveDelegate
 //-------------------------------------------------
--(void)sparkGetAsset:(AssetRequest*)asset assetResponse:(id<SparkResponseDelegate>) onAssetResponse{
+-(void)sparkGetAsset:(AssetRequest*)asset
+             success:(SparkSuccessBlock)success
+             failure:(SparkFailureBlock)failure{
     //new AssetTask(asset, onAssetResponse).execute(getQueue());
 }
 
--(void)sparkGetAssets:(id<SparkResponseDelegate>)onAssetResponse{
+-(void)sparkGetAssetsSuccess:(SparkSuccessBlock)success
+                     failure:(SparkFailureBlock)failure{
     //new AssetsListRequest(onAssetResponse).execute(getQueue());
 }
 
--(void)sparkGetMemberAssets:(MemberRequest*) member assetsListResponse:(id<SparkResponseDelegate>) onAssetsResponse {
+-(void)sparkGetMemberAssets:(MemberRequest*)member
+                    success:(SparkSuccessBlock)success
+                    failure:(SparkFailureBlock)failure {
     //new MemberAssetsListRequest(member,onAssetsResponse).execute(getQueue());
 }
 
--(void)sparkGetMember:(MemberRequest*) member memberResponse:(id<SparkResponseDelegate>) onMemberResponse {
+-(void)sparkGetMember:(MemberRequest*)member
+              success:(SparkSuccessBlock)success
+              failure:(SparkFailureBlock)failure {
     //new MemberTask(member,onMemberResponse).execute(getQueue());
 }
 
--(void)sparkCreateAsset:(AssetRequest*) asset assetResponse:(id<SparkResponseDelegate>) onCreateAssetResponse{
+-(void)sparkCreateAsset:(AssetRequest*)asset
+                success:(SparkSuccessBlock)success
+                failure:(SparkFailureBlock)failure{
     //new CreateAssetTask(asset, onCreateAssetResponse).execute(getQueue());
 }
 
--(void)sparkCreateFile:(FileRequest*) file filesResponse:(id<SparkResponseDelegate>) onSparkResponse {
+-(void)sparkCreateFile:(FileRequest*)file
+               success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure {
     //new CreateFileTask(file, onSparkResponse).execute(getQueue());
 }
 
 //-------------------------------------------------
 //SparkPrintDelegate
 //-------------------------------------------------
--(void)sparkRegisterPrinter:(PrinterRegisterRequest*)printer printerRegisterResponse:(id<SparkResponseDelegate>) onSparkResponse{
+-(void)sparkRegisterPrinter:(PrinterRegisterRequest*)printer
+                    success:(SparkSuccessBlock)success
+                    failure:(SparkFailureBlock)failure{
     //new RegisterPrinterTask(printer, onSparkResponse).execute(getQueue());
 }
 
--(void)sparkUnregisterPrinter:(PrinterUnregisterRequest*)printer object:(id<SparkResponseDelegate>) onSparkResponse {
+-(void)sparkUnregisterPrinter:(PrinterUnregisterRequest*)printer
+                      success:(SparkSuccessBlock)success
+                      failure:(SparkFailureBlock)failure {
     //new UnregisterPrinterTask(printer,onSparkResponse).execute(getQueue());
 }
 
--(void)sparkCreateJob:(CreateJobRequest*)printerJob createJobResponse:(id<SparkResponseDelegate>) onSparkResponse{
+-(void)sparkCreateJob:(CreateJobRequest*)printerJob
+              success:(SparkSuccessBlock)success
+              failure:(SparkFailureBlock)failure{
     //new CreateJobTask(printerJob, onSparkResponse).execute(getQueue());
 }
 
--(void)sparkCommandSend:(CommandSendRequest*)command commandSendResponse:(id<SparkResponseDelegate>) onSparkResponse{
+-(void)sparkCommandSend:(CommandSendRequest*)command
+                success:(SparkSuccessBlock)success
+                failure:(SparkFailureBlock)failure{
     //new CommandSendTask(command, onSparkResponse).execute(getQueue());
 }
 
--(void)sparkJobStatus:(PrinterJobStatusRequest*)job printerJobStatusResponse:(id<SparkResponseDelegate>) onSparkResponse {
+-(void)sparkJobStatus:(PrinterJobStatusRequest*)job
+              success:(SparkSuccessBlock)success
+              failure:(SparkFailureBlock)failure {
     //new PrinterJobStatusTask(job,onSparkResponse).execute(getQueue());
 }
 
