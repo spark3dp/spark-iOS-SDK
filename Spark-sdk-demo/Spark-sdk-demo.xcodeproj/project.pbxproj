@@ -40,6 +40,7 @@
 		93F007191B49467300446F08 /* SparkDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007181B49467300446F08 /* SparkDrive.m */; };
 		93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0071B1B494AFF00446F08 /* FileResponse.m */; };
 		93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007231B4AC6E800446F08 /* RefreshTokenTask.m */; };
+		93F007281B4C18B900446F08 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93F007271B4C18B900446F08 /* ReadMe.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		93F0071B1B494AFF00446F08 /* FileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileResponse.m; sourceTree = "<group>"; };
 		93F007221B4AC6E800446F08 /* RefreshTokenTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTokenTask.h; sourceTree = "<group>"; };
 		93F007231B4AC6E800446F08 /* RefreshTokenTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTokenTask.m; sourceTree = "<group>"; };
+		93F007271B4C18B900446F08 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 		933EC4051B3BF65E009C5CEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93F007271B4C18B900446F08 /* ReadMe.txt */,
 				933EC4061B3BF65E009C5CEB /* Info.plist */,
 				933EC4071B3BF65E009C5CEB /* main.m */,
 			);
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */,
+				93F007281B4C18B900446F08 /* ReadMe.txt in Resources */,
 				931747731B3FE2F3000519A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

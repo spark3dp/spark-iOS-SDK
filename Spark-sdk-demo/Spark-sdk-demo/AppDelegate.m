@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Constants.h"
 #import "SparkManager.h"
- 
+
 @interface AppDelegate ()
 
 @end
@@ -21,10 +21,11 @@
     // Override point for customization after application launch.
     
     // Use init with keys in case of app + secret
-    NSString *key = SPARK_API_KEY;
-    NSString *secret = SPARK_API_SECRET;
+
+    NSString *appKey = @"INSERT_APP_KEY_HERE";
+    NSString *appSecret = @"INSERT_SECRET_HERE";
     
-    [[SparkManager sharedInstance] initKey:key appSecret:secret envType:SPARK_ENV_TYPE_SANBOX];
+    [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
     [[SparkManager sharedInstance] setDebugMode:YES];
 
     return YES;
