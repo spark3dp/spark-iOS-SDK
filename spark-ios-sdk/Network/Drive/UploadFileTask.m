@@ -28,14 +28,12 @@
 }
 
 -(void)executeApiCall{
-    NSString *boundaryConstant = @"----------V2ymHFg03ehbqgZCaKO6jy";
+    NSString *boundaryConstant = @"----acebdf13572468";
 
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
     [urlStr appendString:API_UPLOAD_FILE];
-    
-    
     
     NSURL * url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -45,25 +43,29 @@
     
     // post body
     NSMutableData *body = [NSMutableData data];
-    [body appendData:[[NSString stringWithFormat:@"%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name='file'; filename='credits.txt'\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"file content--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"filename\"; filename=\"file.jpg\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/jpeg" dataUsingEncoding:NSUTF8StringEncoding]];
+
     
-    [body appendData:[@"Content-Disposition: form-data; name=\"public\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString * public = _fileRequest.publicEnable ? @"true" : @"false";
-    [body appendData:[[NSString stringWithFormat:@"%@", public] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"file content--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-
-    [body appendData:[@"Content-Disposition: form-data; name=\"unzip\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString * zip = _fileRequest.zipEnable ? @"true" : @"false";
-    [body appendData:[[NSString stringWithFormat:@"%@", zip] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"file content--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-
     if (_fileRequest.fileData){
         [body appendData:_fileRequest.fileData];
         [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[@"Content-Disposition: form-data; name=\"public\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    NSString * public = _fileRequest.publicEnable ? @"true" : @"false";
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n\r\n", public] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [body appendData:[@"Content-Disposition: form-data; name=\"unzip\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    NSString * zip = _fileRequest.zipEnable ? @"true" : @"false";
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n\r\n", zip] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+
+
     [request setHTTPBody:body];
 
     
