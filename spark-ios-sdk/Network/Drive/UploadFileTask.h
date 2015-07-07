@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseSparkRequest.h"
+#import "Protocols.h"
+#import "FileRequest.h"
 
-@interface UploadFileTask : NSObject
+@interface UploadFileTask : BaseSparkRequest{
+    FileRequest* _fileRequest;
+}
 
+-(instancetype)initWithFileRequest:(FileRequest*)file
+                           success:(SparkSuccessBlock)success
+                           failure:(SparkFailureBlock)failure;
 -(void)executeApiCall;
 
 @end

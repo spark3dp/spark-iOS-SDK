@@ -10,10 +10,15 @@
 
 @implementation FileRequest
 
--(void)fileRequest:(BOOL)zipEnable publicEnable:(BOOL)publicEnable path:(NSString*)path{
-    _zipEnable = zipEnable;
-    _publicEnable = publicEnable;
-    _path = path;
+-(instancetype)initWithFileRequest:(BOOL)zipEnable publicEnable:(BOOL)publicEnable path:(NSString*)path fileData:(NSData*)fileData{
+    self = [super init];
+    if (self) {
+        _zipEnable = zipEnable;
+        _publicEnable = publicEnable;
+        _path = path;
+        _fileData = fileData;
+    }
+    return self;
 }
 
 @end

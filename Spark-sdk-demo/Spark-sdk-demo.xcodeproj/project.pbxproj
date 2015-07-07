@@ -39,6 +39,7 @@
 		93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007151B492ADB00446F08 /* UploadFileTask.m */; };
 		93F007191B49467300446F08 /* SparkDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007181B49467300446F08 /* SparkDrive.m */; };
 		93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0071B1B494AFF00446F08 /* FileResponse.m */; };
+		93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007231B4AC6E800446F08 /* RefreshTokenTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		93F007181B49467300446F08 /* SparkDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkDrive.m; sourceTree = "<group>"; };
 		93F0071A1B494AFF00446F08 /* FileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileResponse.h; sourceTree = "<group>"; };
 		93F0071B1B494AFF00446F08 /* FileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileResponse.m; sourceTree = "<group>"; };
+		93F007221B4AC6E800446F08 /* RefreshTokenTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTokenTask.h; sourceTree = "<group>"; };
+		93F007231B4AC6E800446F08 /* RefreshTokenTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTokenTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +234,8 @@
 				9317474D1B3C3BFA000519A3 /* GuestTokenTask.m */,
 				932A2B421B42D8770013C47A /* AccessTokenTask.h */,
 				932A2B431B42D8780013C47A /* AccessTokenTask.m */,
+				93F007221B4AC6E800446F08 /* RefreshTokenTask.h */,
+				93F007231B4AC6E800446F08 /* RefreshTokenTask.m */,
 			);
 			path = Autentication;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				9317476B1B3C3BFA000519A3 /* BaseSparkRequest.m in Sources */,
 				931747621B3C3BFA000519A3 /* CreateJobRequest.m in Sources */,
 				93F007191B49467300446F08 /* SparkDrive.m in Sources */,
+				93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */,
 				9317476F1B3C3BFA000519A3 /* SparkLogicManager.m in Sources */,
 				933EC4081B3BF65E009C5CEB /* main.m in Sources */,
 				93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */,

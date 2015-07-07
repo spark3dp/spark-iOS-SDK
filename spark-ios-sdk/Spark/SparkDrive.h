@@ -16,7 +16,8 @@
 @property (nonatomic, strong) NetworkUtils * networkUtils;
 
 + (SparkDrive *)sharedInstance;
--(void)sparkUploadFile:(FileRequest*) fileRequest
+
+- (void)sparkUploadFile:(FileRequest*) fileRequest
            succesBlock:(SparkDriveSuccessBlock)sucssesBlock
                failure:(SparkDriveFailureBlock)failureBlock;
 @end

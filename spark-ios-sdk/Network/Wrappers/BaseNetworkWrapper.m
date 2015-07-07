@@ -9,6 +9,8 @@
 #import "BaseNetworkWrapper.h"
 #import "GuestTokenTask.h"
 #import "AccessTokenTask.h"
+#import "RefreshTokenTask.h"
+#import "UploadFileTask.h"
 
 @implementation BaseNetworkWrapper
 //-------------------------------------------------
@@ -26,15 +28,14 @@
              failureBlock:(SparkAuthenticationFailureBlock)failBlock{
     AccessTokenTask *att = [[AccessTokenTask alloc] initAccessTokenTask:authCode succsesBlock:succsesBlock failureBlock:failBlock];
     [att executeApiCall];
-
 }
 
--(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode
-                    success:(SparkSuccessBlock)success
-                    failure:(SparkFailureBlock)failure{
+-(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshRequest
+                    success:(SparkAuthenticationSuccessBlock)success
+                    failure:(SparkAuthenticationFailureBlock)failure{
     
-   
-    //new RefreshTokenTask(refreshCode,onRefreshTokenResponse).execute(getQueue());
+    RefreshTokenTask * rtt = [[RefreshTokenTask alloc] initRefreshTokenTask:refreshRequest succsesBlock:success failureBlock:failure];
+    [rtt executeApiCall];
 }
 
 //-------------------------------------------------
@@ -69,10 +70,11 @@
     //new CreateAssetTask(asset, onCreateAssetResponse).execute(getQueue());
 }
 
--(void)sparkCreateFile:(FileRequest*)file
+-(void)sparkUploadFile:(FileRequest*)fileRequest
                success:(SparkSuccessBlock)success
                failure:(SparkFailureBlock)failure {
-    //new CreateFileTask(file, onSparkResponse).execute(getQueue());
+    UploadFileTask * uft = [[UploadFileTask alloc] initWithFileRequest:fileRequest success:success failure:failure];
+    [uft executeApiCall];
 }
 
 //-------------------------------------------------

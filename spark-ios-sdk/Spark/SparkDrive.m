@@ -100,14 +100,15 @@ static SparkDrive *sharedInstance = nil;
  * @param file New file to create, filled with file data and path.
  * @param onSparkResponse File response object.
  */
--(void)sparkUploadFile:(FileRequest*) fileRequest
+-(void)sparkUploadFile:(FileRequest*)fileRequest
            succesBlock:(SparkDriveSuccessBlock)sucssesBlock
                failure:(SparkDriveFailureBlock)failureBlock{
     
      if ([[SparkManager sharedInstance] checkPreConfiguration]) {
-//         [self.networkUtils uploadFile:fileRequest
-//                           succesBlock:sucssesBlock
-//                               failure:failureBlock];
+         
+         [self.networkUtils uploadFile:fileRequest
+                               success:sucssesBlock
+                               failure:failureBlock];
     }
 }
 

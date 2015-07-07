@@ -14,5 +14,8 @@
 @property (nonatomic, strong) NSString * md5sum;
 @property (nonatomic, strong) NSString * fileId;
 @property (nonatomic, strong) NSString * publicUrl;
+@property (nonatomic, strong) NSArray * files;
+
+-(NSString*)toString;
 
 @end

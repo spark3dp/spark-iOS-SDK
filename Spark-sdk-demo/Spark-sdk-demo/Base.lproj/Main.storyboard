@@ -223,16 +223,31 @@
                                     <action selector="uploadFile:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Heb-Js-aza"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-2v-HEZ">
+                                <rect key="frame" x="180" y="226" width="240" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="IT0-te-uDR"/>
+                                    <constraint firstAttribute="height" constant="200" id="ZUW-83-YOu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="huN-xG-bbs" secondAttribute="centerX" id="X3E-Xg-HZQ"/>
                             <constraint firstItem="RyM-lQ-v3D" firstAttribute="top" secondItem="huN-xG-bbs" secondAttribute="bottom" constant="30" id="Z6d-wd-fYq"/>
                             <constraint firstItem="huN-xG-bbs" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="90" id="hbQ-GI-IuN"/>
+                            <constraint firstItem="kJl-2v-HEZ" firstAttribute="top" secondItem="RyM-lQ-v3D" secondAttribute="bottom" constant="26" id="tNm-qc-Hvr"/>
+                            <constraint firstAttribute="centerX" secondItem="kJl-2v-HEZ" secondAttribute="centerX" id="wc7-RR-aQ1"/>
                             <constraint firstAttribute="centerX" secondItem="RyM-lQ-v3D" secondAttribute="centerX" id="yj8-vh-cVJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Drive" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="resultTextView" destination="kJl-2v-HEZ" id="b1h-VC-OvA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

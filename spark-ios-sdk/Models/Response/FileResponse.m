@@ -10,4 +10,9 @@
 
 @implementation FileResponse
 
+-(NSString*)toString{
+    NSMutableString * mstring = [NSMutableString stringWithFormat:@"name: %@\nmd5sum: %@\nfileId: %@\npublicUrl: %@", self.name, self.md5sum, self.fileId, self.publicUrl];
+    return mstring;
+}
+
 @end

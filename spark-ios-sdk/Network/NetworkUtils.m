@@ -23,22 +23,6 @@
 
 @implementation NetworkUtils
 
-typedef enum ActionType
-{
-    AT_SPARK_GET_ASSET,
-    AT_SPARK_GET_ASSETS,
-    AT_SPARK_GET_MEMBER_ASSETS,
-    AT_SPARK_GET_MEMBER,
-    AT_SPARK_CREATE_ASSET,
-    AT_SPARK_UPLOAD_FILE,
-    AT_SPARK_REGISTER_PRINTER,
-    AT_SPARK_UNREGISTER_PRINTER,
-    AT_SPARK_CREATE_JOB,
-    AT_SPARK_COMMAND_SEND,
-    AT_SPARK_JOB_STATUS
-    
-} ActionType;
-
 -(instancetype)init{
     self = [super init];
     if (self) {
@@ -73,10 +57,10 @@ typedef enum ActionType
 }
 
 -(void)getRefreshToken:(RefreshAccessTokenRequest*)refreshCode
-                success:(SparkSuccessBlock)success
-               failure:(SparkFailureBlock)failure {
+                success:(SparkAuthenticationSuccessBlock)success
+               failure:(SparkAuthenticationFailureBlock)failure {
     
-    //[_baseNetworkWrapper sparkGetRefreshToken:refreshCode accessTokenResponse:onRefreshTokenResponse];
+    [_baseNetworkWrapper sparkGetRefreshToken:refreshCode success:success failure:failure];
 }
 
 -(void)callWithUpdateRefreshToken:(ActionType)action
@@ -98,85 +82,66 @@ typedef enum ActionType
         return;
     }
     
+    _action = action;
+    _object = object;
+    _succses = success;
+    _failure = failure;
+    
     if ([Utils needToUpdateAccessToken]){
        
         RefreshAccessTokenRequest * ratr = [[RefreshAccessTokenRequest alloc] initWithRefreshCode:[[SparkLogicManager sharedInstance] refreshToken]];
         
-        [self getRefreshToken:ratr success:success failure:failure];
-        
-//        // update call
-//        getRefreshToken(new RefreshAccessTokenRequest(MemoryManager.getInstance().getRefreshToken()), new ISparkResponse<AccessTokenResponse>() {
-//            @Override
-//            public void onSparkSuccess(AccessTokenResponse responseObject) {
-//                
-//                action.run();
-//            }
-//            
-//            @Override
-//            public void onSparkFailure(String errorMessage) {
-//                
-//                onResponse.onSparkFailure(errorMessage);
-//                
-//                // on refresh error, try to open the login screen again
-//                initAndShowWebview(new ISparkResponse<AccessTokenResponse>() {
-//                    @Override
-//                    public void onSparkSuccess(AccessTokenResponse responseObject) {
-//                        
-//                        // on success, call the action to perform
-//                        action.run();
-//                    }
-//                    
-//                    @Override
-//                    public void onSparkFailure(String errorMessage) {
-//                        
-//                    }
-//                });
-//                
-//                
-//            }
-//        });
+        [self getRefreshToken:ratr success:^(AccessTokenResponse *responseObject) {
+            [self sparkAction];
+        } failure:^(NSString *error) {
+            NSLog(@"Failed to refresh token");
+        }];
         
     } else {
-        // regular call
-        switch (action) {
-            case AT_SPARK_GET_ASSET:
-                [_baseNetworkWrapper sparkGetAsset:object success:success failure:failure];
-                break;
-            case AT_SPARK_GET_ASSETS:
-                [_baseNetworkWrapper sparkGetAssetsSuccess:success failure:failure];
-                break;
-            case AT_SPARK_GET_MEMBER_ASSETS:
-                [_baseNetworkWrapper sparkGetMemberAssets:object success:success failure:failure];
-                break;
-            case AT_SPARK_GET_MEMBER:
-                [_baseNetworkWrapper sparkGetMember:object success:success failure:failure];
-                break;
-            case AT_SPARK_CREATE_ASSET:
-                [_baseNetworkWrapper sparkCreateAsset:object success:success failure:failure];
-                break;
-            case AT_SPARK_UPLOAD_FILE:
-                [_baseNetworkWrapper sparkCreateFile:object success:success failure:failure];
-                break;
-            case AT_SPARK_REGISTER_PRINTER:
-                [_baseNetworkWrapper sparkRegisterPrinter:object success:success failure:failure];
-                break;
-            case AT_SPARK_UNREGISTER_PRINTER:
-                [_baseNetworkWrapper sparkUnregisterPrinter:object success:success failure:failure];
-                break;
-            case AT_SPARK_CREATE_JOB:
-                [_baseNetworkWrapper sparkCreateJob:object success:success failure:failure];
-                break;
-            case  AT_SPARK_COMMAND_SEND:
-                [_baseNetworkWrapper sparkCommandSend:object success:success failure:failure];
-                break;
-            case AT_SPARK_JOB_STATUS:
-                [_baseNetworkWrapper sparkJobStatus:object success:success failure:failure];
-                break;
-            default:
-                break;
-        }
+        [self sparkAction];
     }
-    
+}
+
+-(void)sparkAction{
+    // regular call
+    switch (_action) {
+        case AT_SPARK_GET_ASSET:
+            [_baseNetworkWrapper sparkGetAsset:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_GET_ASSETS:
+            [_baseNetworkWrapper sparkGetAssetsSuccess:_succses failure:_failure];
+            break;
+        case AT_SPARK_GET_MEMBER_ASSETS:
+            [_baseNetworkWrapper sparkGetMemberAssets:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_GET_MEMBER:
+            [_baseNetworkWrapper sparkGetMember:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_CREATE_ASSET:
+            [_baseNetworkWrapper sparkCreateAsset:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_UPLOAD_FILE:
+            [_baseNetworkWrapper sparkUploadFile:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_REGISTER_PRINTER:
+            [_baseNetworkWrapper sparkRegisterPrinter:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_UNREGISTER_PRINTER:
+            [_baseNetworkWrapper sparkUnregisterPrinter:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_CREATE_JOB:
+            [_baseNetworkWrapper sparkCreateJob:_object success:_succses failure:_failure];
+            break;
+        case  AT_SPARK_COMMAND_SEND:
+            [_baseNetworkWrapper sparkCommandSend:_object success:_succses failure:_failure];
+            break;
+        case AT_SPARK_JOB_STATUS:
+            [_baseNetworkWrapper sparkJobStatus:_object success:_succses failure:_failure];
+            break;
+        default:
+            break;
+    }
+
 }
 
 // API that updates the Access Token when expire

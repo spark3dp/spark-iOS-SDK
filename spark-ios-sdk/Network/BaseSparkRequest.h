@@ -10,8 +10,10 @@
 #import "Protocols.h"
 
 @interface BaseSparkRequest : NSObject{
-    SparkAuthenticationSuccessBlock _succes;
-    SparkAuthenticationFailureBlock _failure;
+    SparkAuthenticationSuccessBlock _succesAuth;
+    SparkAuthenticationFailureBlock _failureAuth;
+    SparkSuccessBlock _succes;
+    SparkFailureBlock _failure;
 }
 
 @end

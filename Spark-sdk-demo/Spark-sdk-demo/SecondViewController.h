@@ -11,8 +11,11 @@
 @interface SecondViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIImage * _selecteImage;
+    NSData * _fileData;
     NSString * _filePath;
 }
+
+@property (nonatomic, weak) IBOutlet UITextView * resultTextView;
 
 -(IBAction)selectFile:(id)sender;
 -(IBAction)uploadFile:(id)sender;

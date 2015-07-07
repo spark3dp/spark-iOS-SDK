@@ -7,6 +7,8 @@
 //
 
 #import "SecondViewController.h"
+#import "FileRequest.h"
+#import "SparkDrive.h"
 
 @interface SecondViewController ()
 
@@ -32,7 +34,16 @@
 }
 
 -(IBAction)uploadFile:(id)sender{
-    
+    FileRequest * fileRquest = [[FileRequest alloc] initWithFileRequest:NO publicEnable:NO path:nil fileData:_fileData];
+    [[SparkDrive sharedInstance] sparkUploadFile:fileRquest succesBlock:^(FileResponse *responseObject) {
+        if ([responseObject.files count] > 0) {
+            [self.resultTextView setText:[[responseObject.files objectAtIndex:0] toString]];
+        }else{
+            [self.resultTextView setText:[responseObject toString]];
+        }
+    } failure:^(NSString *error) {
+        [self.resultTextView setText:error];
+    }];
 }
 
 
@@ -41,10 +52,12 @@
 {
     //You can retrieve the actual UIImage
     _selecteImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    _fileData = UIImageJPEGRepresentation(_selecteImage, 1.0);
     //Or you can get the image url from AssetsLibrary
     _filePath = [info valueForKey:UIImagePickerControllerReferenceURL];
     
     [picker dismissViewControllerAnimated:YES completion:^{
+        [self.resultTextView setText:[NSString stringWithFormat:@"File selected : %@", _filePath]];
     }];
 }
 @end

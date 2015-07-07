@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import "Constants.h"
 #import "SparkAuthentication.h"
+#import "SparkDrive.h"
 
 
 @implementation SparkManager
@@ -62,7 +63,7 @@ static SparkManager *sharedInstance = nil;
         // init the sub variables for api calls
         [[SparkAuthentication sharedInstance] setNetworkUtils:self.networkUtils];
         
-        //SparkDrive.getInstance().setNetworkUtils(mNetworkUtils);
+        [[SparkDrive sharedInstance] setNetworkUtils:self.networkUtils];
         
         //SparkPrint.getInstance().setNetworkUtils(mNetworkUtils);
     }

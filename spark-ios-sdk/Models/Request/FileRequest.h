@@ -13,6 +13,7 @@
 @property (nonatomic) BOOL zipEnable;
 @property (nonatomic) BOOL publicEnable;
 @property (nonatomic, strong) NSString * path;
+@property (nonatomic, strong) NSData* fileData;
 
--(void)fileRequest:(BOOL)zipEnable publicEnable:(BOOL)publicEnable path:(NSString*)path;
+-(instancetype)initWithFileRequest:(BOOL)zipEnable publicEnable:(BOOL)publicEnable path:(NSString*)path fileData:(NSData*)fileData;
 @end

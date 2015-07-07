@@ -17,8 +17,8 @@
                           failure:(SparkAuthenticationFailureBlock)failBlock{
     self = [super init];
     if (self) {
-        _succes = succsesBlock;
-        _failure = failBlock;
+        _succesAuth = succsesBlock;
+        _failureAuth = failBlock;
     }
     
     return self;
@@ -66,9 +66,9 @@
                                    accessTokenResponse.refreshToken = [JSON objectForKey:@"refresh_token"];
                                    accessTokenResponse.expiresIn = [JSON objectForKey:@"expires_in"];
                                    accessTokenResponse.expiresAt = [JSON objectForKey:@"expires_at"];
-                                   _succes(accessTokenResponse);
+                                   _succesAuth(accessTokenResponse);
                                }else{
-                                   _failure(error.localizedDescription);
+                                   _failureAuth(error.localizedDescription);
                                }
                            }];
 }

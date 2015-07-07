@@ -20,8 +20,8 @@
 
 
 -(void)sparkGetRefreshToken:(RefreshAccessTokenRequest*)refreshCode
-                    success:(SparkSuccessBlock)success
-                    failure:(SparkFailureBlock)failure;
+                    success:(SparkAuthenticationSuccessBlock)success
+                    failure:(SparkAuthenticationFailureBlock)failure;
 
 -(void)sparkGetAsset:(AssetRequest*)asset
              success:(SparkSuccessBlock)success
@@ -42,7 +42,7 @@
                 success:(SparkSuccessBlock)success
                 failure:(SparkFailureBlock)failure;
 
--(void)sparkCreateFile:(FileRequest*)file
+-(void)sparkUploadFile:(FileRequest*)file
                success:(SparkSuccessBlock)success
                failure:(SparkFailureBlock)failure;
 

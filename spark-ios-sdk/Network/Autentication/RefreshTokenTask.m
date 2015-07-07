@@ -1,41 +1,41 @@
 //
-//  AccessTokenTask.m
+//  RefreshTokenTask.m
 //  Spark-sdk-demo
 //
-//  Created by Tomer Har Yoffi on 6/30/15.
+//  Created by Tomer Har Yoffi on 7/6/15.
 //  Copyright (c) 2015 Tomer Har Yoffi. All rights reserved.
 //
 
-#import "AccessTokenTask.h"
+#import "RefreshTokenTask.h"
 #import "Utils.h"
 #import "Constants.h"
 #import "SparkLogicManager.h"
 
-@implementation AccessTokenTask
+@implementation RefreshTokenTask
 
--(instancetype)initAccessTokenTask:(AuthCodeRequest*)authCode
-                      succsesBlock:(SparkAuthenticationSuccessBlock)succsesBlock
-                      failureBlock:(SparkAuthenticationFailureBlock)failBlock{
+
+-(instancetype)initRefreshTokenTask:(RefreshAccessTokenRequest*)refreshCode
+                       succsesBlock:(SparkAuthenticationSuccessBlock)succsesBlock
+                       failureBlock:(SparkAuthenticationFailureBlock)failBlock{
     
     self = [super init];
     if (self) {
         _succesAuth = succsesBlock;
         _failureAuth = failBlock;
-        _authCode = authCode;
+        _refreshAccessTokenRequest = refreshCode;
     }
     
     return self;
 }
-
 
 -(void)executeApiCall{
     
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
-    [urlStr appendString:API_GET_GUEST_TOKEN];
+    [urlStr appendString:API_GET_REFRESH_TOKEN];
     
-    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=authorization_code&code=%@&response_type=code&redirect_uri=http://www.%@.com", _authCode.autoCode, SPARK_CALLBACK_SITE_NAME];
+    NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=refresh_token&refresh_token=%@", _refreshAccessTokenRequest.refreshCode];
     
     NSData * encodeData = [httpPostBody dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -47,12 +47,12 @@
     [request setHTTPBody:encodeData];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[[SparkLogicManager sharedInstance] appKeySecretBase64] forHTTPHeaderField:@"Authorization"];
-
+    
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                                                              
+                               
                                NSDictionary *JSON =
                                [NSJSONSerialization JSONObjectWithData: data
                                                                options: NSJSONReadingMutableContainers
@@ -81,6 +81,5 @@
     [[SparkLogicManager sharedInstance] setAuthorizationType:SPARK_AUTHORIZATION_TOKEN_TYPE_REGULAR];
     [[SparkLogicManager sharedInstance] setExpiresAt:[[json objectForKey:@"expires_at"] longValue]];
 }
-
 
 @end
