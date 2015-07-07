@@ -9,7 +9,7 @@ To use and run this sample app, you must register an app on the Spark developer'
 1. Download the sample apps from https://github.com/spark3dp/authentication-samples and copy the Objective C folder. 
 
 2. Locate the AppDelegate.m file in the Objective C folder and change the following:
-	 under - (BOOL)application: didFinishLaunchingWithOptions:
+    under - (BOOL)application: didFinishLaunchingWithOptions:
 
 	Set appKey to the App Key provided when you registered your app on the Spark developer's portal.
 	Set appSecret to the App Secret provided when you registered your app on the Spark developer's portal.
@@ -18,4 +18,13 @@ To use and run this sample app, you must register an app on the Spark developer'
 	NSString *appKey = "INSERT_APP_KEY_HERE";
 	NSString * appSecret = "INSERT_SECRET_HERE";
 
+3.  inorder to use the spark sdk you need to initialized the "SparkManager" see sample app.
+    [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
+    [[SparkManager sharedInstance] setDebugMode:YES];
+
 4. Run the project .
+
+more info:
+######################
+The first tab handle the SPARK Authentication usage.
+The secound tab  handle the SPARK Drive usage.
