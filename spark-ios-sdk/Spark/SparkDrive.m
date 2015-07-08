@@ -97,8 +97,9 @@ static SparkDrive *sharedInstance = nil;
 
 /** upload file and upload it to the server.
  *
- * @param file New file to create, filled with file data and path.
- * @param onSparkResponse File response object.
+ * @param fileRequest New file to create, filled with file data and path.
+ * @param sucssesBlock File response object.
+ * @param failureBlock error string.
  */
 -(void)sparkUploadFile:(FileRequest*)fileRequest
            succesBlock:(SparkDriveSuccessBlock)sucssesBlock
@@ -112,5 +113,23 @@ static SparkDrive *sharedInstance = nil;
     }
 }
 
+
+/** upload file and upload it to the server.
+ *
+ * @param meshImportRequest see obj.
+ * @param succesBlock NSDictionary response object.
+ * @param failureBlock error string.
+ */
+-(void) sparkMeshImport:(MeshImportRequest*)meshImportRequest
+            succesBlock:(SparkSuccessBlock)succesBlock
+                failure:(SparkFailureBlock)failureBlock{
+    
+    if ([[SparkManager sharedInstance] checkPreConfiguration]) {
+        
+        [self.networkUtils meshImport:meshImportRequest
+                              success:succesBlock
+                              failure:failureBlock];
+    }
+}
 
 @end

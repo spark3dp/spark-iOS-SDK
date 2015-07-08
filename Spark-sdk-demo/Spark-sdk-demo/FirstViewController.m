@@ -10,7 +10,10 @@
 #import "SparkSession.h"
 #import "Constants.h"
 #import "SparkAuthentication.h"
+#import "SparkDrive.h"
 #import "AccessTokenResponse.h"
+#import "MeshImportRequest.h"
+
 
 @interface FirstViewController ()
 
@@ -21,6 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _apiCommnads = [NSArray arrayWithObjects:@"Grant Spark Guest Token",
+                    @"Grant Spark Access Token",
+                    @"Select File", @"Upload File",
+                    @"Mesh Import", nil];
+    
+    _resultText = [NSMutableString string];
+    
     [self updateSessionDetails];
 }
 
@@ -29,31 +39,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)grantSparkGuestTokenPressed:(id)sender {
+- (void)grantSparkGuestTokenPressed {
     
     [[SparkAuthentication sharedInstance] getGuestToken:^(AccessTokenResponse *responseObject) {
-        [self.guestTokenTextField setText:responseObject.accessToken];
         [self updateSessionDetails];
     } failure:^(NSString *error) {
-        [self.guestTokenTextField setText:error];
+        [self updateResultView:error];
     }];
 }
 
-- (IBAction)grantSparkAccessTokenPressed:(id)sender {
+- (void)grantSparkAccessTokenPressed {
     
     [[SparkAuthentication sharedInstance] getAuthorizationCode:^(AccessTokenResponse *responseObject) {
-        [self.accessTokenTextField setText:responseObject.accessToken];
         [self updateSessionDetails];
     } failure:^(NSString *error) {
-        [self.accessTokenTextField setText:error];
+        [self updateResultView:error];
     } parentViewController:self];
 }
 
 -(void)updateSessionDetails{
     SparkSession * currentSession = [SparkSession getActiveSession];
     
-    [self.accessTokenTextField setText:currentSession.accessToken];
-    [self.refreshTokenTextField setText:currentSession.refreshToken];
+    [self updateResultView:[NSString stringWithFormat:@"accessToken: %@", currentSession.accessToken]];
+    [self updateResultView:[NSString stringWithFormat:@"refreshToken: %@", currentSession.refreshToken]];
     
     NSString *tokenType = SPARK_TOKEN_TYPE_NONE;
     if (currentSession.authorizationType == SPARK_AUTHORIZATION_TOKEN_TYPE_REGULAR)
@@ -67,5 +75,110 @@
     
     [self.sessionTokenTypeTextField setText:tokenType];
 }
+
+-(void)updateResultView:(NSString*)text{
+    [_resultText appendString:[NSString stringWithFormat:@"\n%@\r\n", text]];
+    [self.resultTextView setText:_resultText];
+    [self scrollOutputToBottom];
+}
+
+-(void)scrollOutputToBottom {
+    CGPoint p = [self.resultTextView contentOffset];
+    [self.resultTextView setContentOffset:p animated:NO];
+    [self.resultTextView scrollRangeToVisible:NSMakeRange([self.resultTextView.text length], 0)];
+}
+
+-(void)selectFile{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.delegate = self;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+-(void)uploadFile{
+    FileRequest * fileRquest = [[FileRequest alloc] initWithFileRequest:NO publicEnable:NO path:nil fileData:_fileData];
+    [[SparkDrive sharedInstance] sparkUploadFile:fileRquest succesBlock:^(FileResponse *responseObject) {
+        if ([responseObject.files count] > 0) {
+            _fileResponse = [responseObject.files objectAtIndex:0];
+            [self updateResultView:[[responseObject.files objectAtIndex:0] toString]];
+        }else{
+            _fileResponse = responseObject;
+            [self updateResultView:[responseObject toString]];
+        }
+    } failure:^(NSString *error) {
+        [self updateResultView:error];
+    }];
+}
+
+-(void)meshImport{
+    MeshImportRequest * meshImportRequest = [[MeshImportRequest alloc] initWithFileId:_fileResponse.fileId
+                                                                                 name:@"frog"
+                                                                            transfrom:@"[ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ] ]"
+                                                                     isGenerateVisual:NO];
+    
+    [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
+       [self updateResultView:responseObject];
+    } failure:^(NSString *error) {
+        [self updateResultView:error];
+    }];
+}
+
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //You can retrieve the actual UIImage
+    _selectedFile = [info valueForKey:UIImagePickerControllerOriginalImage];
+    _fileData = UIImageJPEGRepresentation(_selectedFile, 1.0);
+    //Or you can get the image url from AssetsLibrary
+    _filePath = [info valueForKey:UIImagePickerControllerReferenceURL];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self updateResultView:[NSString stringWithFormat:@"File selected : %@", _filePath]];
+    }];
+}
+
+#pragma mark API Commands
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_apiCommnads count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    [cell.textLabel setText:[_apiCommnads objectAtIndex:[indexPath row]]];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch ([indexPath row]) {
+        case 0:
+            [self grantSparkGuestTokenPressed];
+            break;
+        case 1:
+            [self grantSparkAccessTokenPressed];
+            break;
+        case 2:
+            [self selectFile];
+            break;
+        case 3:
+            [self uploadFile];
+            break;
+        case 4:
+            [self meshImport];
+            break;
+
+            
+        default:
+            break;
+    }}
+
 
 @end

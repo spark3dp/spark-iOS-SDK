@@ -9,15 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Protocols.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSArray * _apiCommnads;
+    NSMutableString * _resultText;
+    UIImage * _selectedFile;
+    NSData * _fileData;
+    NSString * _filePath;
+    FileResponse * _fileResponse;
+}
 
-@property (nonatomic, weak) IBOutlet UITextField * accessTokenTextField;
-@property (nonatomic, weak) IBOutlet UITextField * refreshTokenTextField;
 @property (nonatomic, weak) IBOutlet UITextField * sessionTokenTypeTextField;
-@property (nonatomic, weak) IBOutlet UITextField * guestTokenTextField;
+@property (nonatomic, weak) IBOutlet UITextView * resultTextView;
 
-- (IBAction)grantSparkGuestTokenPressed:(id)sender;
-- (IBAction)grantSparkAccessTokenPressed:(id)sender;
 
 @end
 

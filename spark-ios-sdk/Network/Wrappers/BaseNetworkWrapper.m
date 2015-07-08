@@ -11,6 +11,7 @@
 #import "AccessTokenTask.h"
 #import "RefreshTokenTask.h"
 #import "UploadFileTask.h"
+#import "MeshImportTask.h"
 
 @implementation BaseNetworkWrapper
 //-------------------------------------------------
@@ -108,6 +109,14 @@
               success:(SparkSuccessBlock)success
               failure:(SparkFailureBlock)failure {
     //new PrinterJobStatusTask(job,onSparkResponse).execute(getQueue());
+}
+
+-(void)sparkMeshImport:(MeshImportRequest*)meshImportRequest
+               success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure {
+    MeshImportTask * mit = [[MeshImportTask alloc] initWithMeshImportRequest:meshImportRequest success:success failure:failure];
+    [mit executeApiCall];
+
 }
 
 @end

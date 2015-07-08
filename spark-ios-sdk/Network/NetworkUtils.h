@@ -18,6 +18,7 @@ typedef enum ActionType
     AT_SPARK_GET_MEMBER,
     AT_SPARK_CREATE_ASSET,
     AT_SPARK_UPLOAD_FILE,
+    AT_SPARK_MESH_IMPORT,
     AT_SPARK_REGISTER_PRINTER,
     AT_SPARK_UNREGISTER_PRINTER,
     AT_SPARK_CREATE_JOB,
@@ -53,6 +54,10 @@ typedef enum ActionType
                     failure:(SparkFailureBlock)failure;
 
 -(void)uploadFile:(FileRequest*)file
+          success:(SparkSuccessBlock)success
+          failure:(SparkFailureBlock)failure;
+
+-(void)meshImport:(MeshImportRequest*)meshImportRequest
           success:(SparkSuccessBlock)success
           failure:(SparkFailureBlock)failure;
 @end

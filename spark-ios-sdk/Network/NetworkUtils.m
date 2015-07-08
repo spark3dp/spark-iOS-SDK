@@ -138,6 +138,9 @@
         case AT_SPARK_JOB_STATUS:
             [_baseNetworkWrapper sparkJobStatus:_object success:_succses failure:_failure];
             break;
+        case AT_SPARK_MESH_IMPORT:
+            [_baseNetworkWrapper sparkMeshImport:_object success:_succses failure:_failure];
+            break;
         default:
             break;
     }
@@ -195,6 +198,12 @@
           success:(SparkSuccessBlock)success
           failure:(SparkFailureBlock)failure {
     [self callWithUpdateRefreshToken:AT_SPARK_UPLOAD_FILE withObject:file success:success failure:failure checkToken:YES];
+}
+
+-(void)meshImport:(MeshImportRequest*)meshImportRequest
+          success:(SparkSuccessBlock)success
+          failure:(SparkFailureBlock)failure {
+    [self callWithUpdateRefreshToken:AT_SPARK_MESH_IMPORT withObject:meshImportRequest success:success failure:failure checkToken:YES];
 }
 
 -(void)registerPrinter:(PrinterRegisterRequest*)printer

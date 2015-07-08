@@ -11,6 +11,7 @@
 
 #import "AuthCodeRequest.h"
 #import "RefreshAccessTokenRequest.h"
+#import "MeshImportRequest.h"
 #import "AssetRequest.h"
 #import "MemberRequest.h"
 #import "FileRequest.h"

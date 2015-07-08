@@ -10,9 +10,9 @@
 
 @interface AssetRequest : NSObject
 
-@property (nonatomic, strong) NSString * asset_name;
-@property (nonatomic, strong) NSString * asset_description;
-@property (nonatomic, strong) NSString * asset_tags;
+@property (nonatomic, strong) NSString * assetName;
+@property (nonatomic, strong) NSString * assetDescription;
+@property (nonatomic, strong) NSString * assetTags;
 
 -(void)assetRequest:(NSString*)assetName assetDescription:(NSString*)assetDescription assetTags:(NSString*)assetTags;
 -(NSString*)toJson;

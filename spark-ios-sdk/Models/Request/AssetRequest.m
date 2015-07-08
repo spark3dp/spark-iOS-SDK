@@ -12,16 +12,16 @@
 
 
 -(void)assetRequest:(NSString*)assetName assetDescription:(NSString*)assetDescription assetTags:(NSString*)assetTags{
-    _asset_name = assetName;
-    _asset_description = assetDescription;
-    _asset_tags = assetTags;
+    _assetName = assetName;
+    _assetDescription = assetDescription;
+    _assetTags = assetTags;
 }
 
 -(NSString*)toJson{
     NSMutableDictionary * json = [[NSMutableDictionary alloc] init];
-    [json setObject:self.asset_name forKey:@"asset_name"];
-    [json setObject:self.asset_description forKey:@"asset_description"];
-    [json setObject:self.asset_tags forKey:@"asset_tags"];
+    [json setObject:self.assetName forKey:@"asset_name"];
+    [json setObject:self.assetDescription forKey:@"asset_description"];
+    [json setObject:self.assetTags forKey:@"asset_tags"];
     
     NSError *error;
     NSString *jsonString = nil;
@@ -37,35 +37,5 @@
     
     return jsonString;
 }
-
-
-//    
-//    NSString *bodyData = [NSString stringWithFormat:@"user=%@", jsonString];
-//    NSData * encodeData = [bodyData dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSString *urlString = [NSString stringWithFormat:@"%@UserInsertServlet", SERVER_URL] ;
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSLog(@"URL: %@",url);
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-//                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-//                                                       timeoutInterval:20.0];
-//    [request setHTTPMethod:@"POST"];
-//    [request setHTTPBody:encodeData];
-//    
-//    [NSURLConnection sendAsynchronousRequest:request
-//                                       queue:[NSOperationQueue mainQueue]
-//                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//                               
-//                               [self hideLoadingIndicator];
-//                               
-//                               if (error) {
-//                                   [self showErrorMessage];
-//                                   return ;
-//                               }
-//                               
-//                               NSString* encodeRespose = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//                           }];
-//}
 
 @end

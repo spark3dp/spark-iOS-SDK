@@ -33,7 +33,6 @@
 		933EC4081B3BF65E009C5CEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4071B3BF65E009C5CEB /* main.m */; };
 		933EC40B1B3BF65E009C5CEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC40A1B3BF65E009C5CEB /* AppDelegate.m */; };
 		933EC40E1B3BF65E009C5CEB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC40D1B3BF65E009C5CEB /* FirstViewController.m */; };
-		933EC4111B3BF65E009C5CEB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4101B3BF65E009C5CEB /* SecondViewController.m */; };
 		933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933EC4151B3BF65E009C5CEB /* Images.xcassets */; };
 		933EC4251B3BF65E009C5CEB /* Spark_sdk_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 933EC4241B3BF65E009C5CEB /* Spark_sdk_demoTests.m */; };
 		93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007151B492ADB00446F08 /* UploadFileTask.m */; };
@@ -41,6 +40,9 @@
 		93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0071B1B494AFF00446F08 /* FileResponse.m */; };
 		93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007231B4AC6E800446F08 /* RefreshTokenTask.m */; };
 		93F007281B4C18B900446F08 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93F007271B4C18B900446F08 /* ReadMe.txt */; };
+		93F0075A1B4D55D500446F08 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F007591B4D55D500446F08 /* logo.png */; };
+		93F0075D1B4D5D9100446F08 /* MeshImportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */; };
+		93F007611B4D6B5700446F08 /* MeshImportTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007601B4D6B5700446F08 /* MeshImportTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,8 +110,6 @@
 		933EC40A1B3BF65E009C5CEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		933EC40C1B3BF65E009C5CEB /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		933EC40D1B3BF65E009C5CEB /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		933EC40F1B3BF65E009C5CEB /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		933EC4101B3BF65E009C5CEB /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		933EC4151B3BF65E009C5CEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		933EC4181B3BF65E009C5CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		933EC41E1B3BF65E009C5CEB /* Spark-sdk-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spark-sdk-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +124,11 @@
 		93F007221B4AC6E800446F08 /* RefreshTokenTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTokenTask.h; sourceTree = "<group>"; };
 		93F007231B4AC6E800446F08 /* RefreshTokenTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTokenTask.m; sourceTree = "<group>"; };
 		93F007271B4C18B900446F08 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = SOURCE_ROOT; };
+		93F007591B4D55D500446F08 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		93F0075B1B4D5D9100446F08 /* MeshImportRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshImportRequest.h; sourceTree = "<group>"; };
+		93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshImportRequest.m; sourceTree = "<group>"; };
+		93F0075F1B4D6B5700446F08 /* MeshImportTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshImportTask.h; path = Print/MeshImportTask.h; sourceTree = "<group>"; };
+		93F007601B4D6B5700446F08 /* MeshImportTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeshImportTask.m; path = Print/MeshImportTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +205,8 @@
 				931747441B3C3BFA000519A3 /* PrinterUnregisterRequest.m */,
 				931747451B3C3BFA000519A3 /* RefreshAccessTokenRequest.h */,
 				931747461B3C3BFA000519A3 /* RefreshAccessTokenRequest.m */,
+				93F0075B1B4D5D9100446F08 /* MeshImportRequest.h */,
+				93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 		9317474A1B3C3BFA000519A3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				93F0075E1B4D6B3700446F08 /* Print */,
 				93F007131B492AA500446F08 /* Drive */,
 				9317474B1B3C3BFA000519A3 /* Autentication */,
 				9317474E1B3C3BFA000519A3 /* BaseSparkRequest.h */,
@@ -311,8 +319,6 @@
 				933EC40A1B3BF65E009C5CEB /* AppDelegate.m */,
 				933EC40C1B3BF65E009C5CEB /* FirstViewController.h */,
 				933EC40D1B3BF65E009C5CEB /* FirstViewController.m */,
-				933EC40F1B3BF65E009C5CEB /* SecondViewController.h */,
-				933EC4101B3BF65E009C5CEB /* SecondViewController.m */,
 				931747711B3FE2F3000519A3 /* Main.storyboard */,
 				933EC4151B3BF65E009C5CEB /* Images.xcassets */,
 				933EC4171B3BF65E009C5CEB /* LaunchScreen.xib */,
@@ -324,6 +330,7 @@
 		933EC4051B3BF65E009C5CEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93F007591B4D55D500446F08 /* logo.png */,
 				93F007271B4C18B900446F08 /* ReadMe.txt */,
 				933EC4061B3BF65E009C5CEB /* Info.plist */,
 				933EC4071B3BF65E009C5CEB /* main.m */,
@@ -355,6 +362,15 @@
 				93F007151B492ADB00446F08 /* UploadFileTask.m */,
 			);
 			name = Drive;
+			sourceTree = "<group>";
+		};
+		93F0075E1B4D6B3700446F08 /* Print */ = {
+			isa = PBXGroup;
+			children = (
+				93F0075F1B4D6B5700446F08 /* MeshImportTask.h */,
+				93F007601B4D6B5700446F08 /* MeshImportTask.m */,
+			);
+			name = Print;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F0075A1B4D55D500446F08 /* logo.png in Resources */,
 				933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */,
 				93F007281B4C18B900446F08 /* ReadMe.txt in Resources */,
 				931747731B3FE2F3000519A3 /* Main.storyboard in Resources */,
@@ -462,9 +479,9 @@
 				931747701B3C3BFA000519A3 /* Utils.m in Sources */,
 				9317477A1B400C2B000519A3 /* AccessTokenResponse.m in Sources */,
 				931747661B3C3BFA000519A3 /* PrinterRegisterRequest.m in Sources */,
-				933EC4111B3BF65E009C5CEB /* SecondViewController.m in Sources */,
 				931747761B3FE416000519A3 /* SparkAuthentication.m in Sources */,
 				931747671B3C3BFA000519A3 /* PrinterUnregisterRequest.m in Sources */,
+				93F0075D1B4D5D9100446F08 /* MeshImportRequest.m in Sources */,
 				933EC40B1B3BF65E009C5CEB /* AppDelegate.m in Sources */,
 				9317476E1B3C3BFA000519A3 /* SparkManager.m in Sources */,
 				931747641B3C3BFA000519A3 /* MemberRequest.m in Sources */,
@@ -484,6 +501,7 @@
 				9317476C1B3C3BFA000519A3 /* NetworkUtils.m in Sources */,
 				931747691B3C3BFA000519A3 /* SparkSession.m in Sources */,
 				9317476D1B3C3BFA000519A3 /* BaseNetworkWrapper.m in Sources */,
+				93F007611B4D6B5700446F08 /* MeshImportTask.m in Sources */,
 				9317475F1B3C3BFA000519A3 /* AssetRequest.m in Sources */,
 				932A2B481B42E94D0013C47A /* NSData+MPBase64.m in Sources */,
 				931747681B3C3BFA000519A3 /* RefreshAccessTokenRequest.m in Sources */,

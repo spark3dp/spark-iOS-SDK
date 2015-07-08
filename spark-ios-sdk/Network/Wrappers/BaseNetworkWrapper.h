@@ -66,4 +66,8 @@
               success:(SparkSuccessBlock)success
               failure:(SparkFailureBlock)failure;
 
+-(void)sparkMeshImport:(MeshImportRequest*)meshImportRequest
+               success:(SparkSuccessBlock)success
+               failure:(SparkFailureBlock)failure;
+
 @end
