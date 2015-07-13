@@ -43,6 +43,8 @@
 		93F0075A1B4D55D500446F08 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F007591B4D55D500446F08 /* logo.png */; };
 		93F0075D1B4D5D9100446F08 /* MeshImportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */; };
 		93F007611B4D6B5700446F08 /* MeshImportTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007601B4D6B5700446F08 /* MeshImportTask.m */; };
+		93F007671B4E62C500446F08 /* TeaPot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 93F007661B4E62C500446F08 /* TeaPot.obj */; };
+		93F0076A1B4EA31F00446F08 /* GetTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007691B4EA31F00446F08 /* GetTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,9 @@
 		93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshImportRequest.m; sourceTree = "<group>"; };
 		93F0075F1B4D6B5700446F08 /* MeshImportTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshImportTask.h; path = Print/MeshImportTask.h; sourceTree = "<group>"; };
 		93F007601B4D6B5700446F08 /* MeshImportTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeshImportTask.m; path = Print/MeshImportTask.m; sourceTree = "<group>"; };
+		93F007661B4E62C500446F08 /* TeaPot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TeaPot.obj; sourceTree = "<group>"; };
+		93F007681B4EA31F00446F08 /* GetTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTask.h; path = Print/GetTask.h; sourceTree = "<group>"; };
+		93F007691B4EA31F00446F08 /* GetTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetTask.m; path = Print/GetTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +335,7 @@
 		933EC4051B3BF65E009C5CEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93F007661B4E62C500446F08 /* TeaPot.obj */,
 				93F007591B4D55D500446F08 /* logo.png */,
 				93F007271B4C18B900446F08 /* ReadMe.txt */,
 				933EC4061B3BF65E009C5CEB /* Info.plist */,
@@ -369,6 +375,8 @@
 			children = (
 				93F0075F1B4D6B5700446F08 /* MeshImportTask.h */,
 				93F007601B4D6B5700446F08 /* MeshImportTask.m */,
+				93F007681B4EA31F00446F08 /* GetTask.h */,
+				93F007691B4EA31F00446F08 /* GetTask.m */,
 			);
 			name = Print;
 			sourceTree = "<group>";
@@ -456,6 +464,7 @@
 				93F0075A1B4D55D500446F08 /* logo.png in Resources */,
 				933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */,
 				93F007281B4C18B900446F08 /* ReadMe.txt in Resources */,
+				93F007671B4E62C500446F08 /* TeaPot.obj in Resources */,
 				931747731B3FE2F3000519A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +506,7 @@
 				93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */,
 				9317476F1B3C3BFA000519A3 /* SparkLogicManager.m in Sources */,
 				933EC4081B3BF65E009C5CEB /* main.m in Sources */,
+				93F0076A1B4EA31F00446F08 /* GetTask.m in Sources */,
 				93F007161B492ADB00446F08 /* UploadFileTask.m in Sources */,
 				9317476C1B3C3BFA000519A3 /* NetworkUtils.m in Sources */,
 				931747691B3C3BFA000519A3 /* SparkSession.m in Sources */,

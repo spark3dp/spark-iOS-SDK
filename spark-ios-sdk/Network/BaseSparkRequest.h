@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Protocols.h"
+#import "Utils.h"
+#import "Constants.h"
+#import "SparkLogicManager.h"
 
 @interface BaseSparkRequest : NSObject{
     SparkAuthenticationSuccessBlock _succesAuth;

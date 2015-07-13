@@ -45,7 +45,6 @@ typedef enum ActionType
                     failure:(SparkAuthenticationFailureBlock)failBlock
        parentViewController:(UIViewController*)parent;
 
-
 -(void)getAsset:(AssetRequest*)asset
         success:(SparkSuccessBlock)success
         failure:(SparkFailureBlock)failure;

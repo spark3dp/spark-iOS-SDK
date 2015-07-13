@@ -34,7 +34,7 @@ static SparkManager *sharedInstance = nil;
 /**
  * Enable Spark Debug Mode
  * @param debugMode Enabel the debug mode.
- *                  Debug messages appear in the logcat
+ *                  Debug messages appear in the log
  *
  */
 
@@ -45,11 +45,11 @@ static SparkManager *sharedInstance = nil;
 /**
  * Init Spark API - Use this method the init the Spark API with the app key & app secret
  *
- * @param context Current activity
  * @param appKey Spark App Key from the dev portal
  * @param appSecret Spark App Secret from the dev portal
+ * @param envType enviroment mode production or dev
  */
--(void)initKey:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int) envType {
+-(void)initKey:(NSString*)appKey appSecret:(NSString*) appSecret envType:(int)envType {
     
     // set the keys
     [[SparkLogicManager sharedInstance] setAppKeySecret:appKey appSecret:appSecret envType:envType];
@@ -64,8 +64,6 @@ static SparkManager *sharedInstance = nil;
         [[SparkAuthentication sharedInstance] setNetworkUtils:self.networkUtils];
         
         [[SparkDrive sharedInstance] setNetworkUtils:self.networkUtils];
-        
-        //SparkPrint.getInstance().setNetworkUtils(mNetworkUtils);
     }
 }
 

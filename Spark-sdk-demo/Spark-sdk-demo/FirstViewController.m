@@ -26,8 +26,8 @@
     
     _apiCommnads = [NSArray arrayWithObjects:@"Grant Spark Guest Token",
                     @"Grant Spark Access Token",
-                    @"Select File", @"Upload File",
-                    @"Mesh Import", nil];
+                    @"Upload File",
+                    @"Mesh Import", @"Mesh Export",  @"Mesh Analysis", nil];
     
     _resultText = [NSMutableString string];
     
@@ -96,6 +96,10 @@
 }
 
 -(void)uploadFile{
+    NSURL *filePath = [[NSBundle mainBundle] URLForResource:@"TeaPot" withExtension:@"obj"];
+    NSString * stringPath = [filePath absoluteString];
+    _fileData = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringPath]];
+    
     FileRequest * fileRquest = [[FileRequest alloc] initWithFileRequest:NO publicEnable:NO path:nil fileData:_fileData];
     [[SparkDrive sharedInstance] sparkUploadFile:fileRquest succesBlock:^(FileResponse *responseObject) {
         if ([responseObject.files count] > 0) {
@@ -112,8 +116,8 @@
 
 -(void)meshImport{
     MeshImportRequest * meshImportRequest = [[MeshImportRequest alloc] initWithFileId:_fileResponse.fileId
-                                                                                 name:@"frog"
-                                                                            transfrom:@"[ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ] ]"
+                                                                                 name:@"TeaPot"
+                                                                            transfrom:@""
                                                                      isGenerateVisual:NO];
     
     [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
@@ -121,6 +125,23 @@
     } failure:^(NSString *error) {
         [self updateResultView:error];
     }];
+}
+
+-(void)meshExport{
+//    MeshImportRequest * meshImportRequest = [[MeshImportRequest alloc] initWithFileId:_fileResponse.fileId
+//                                                                                 name:@"TeaPot"
+//                                                                            transfrom:@""
+//                                                                     isGenerateVisual:NO];
+//    
+//    [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
+//        [self updateResultView:responseObject];
+//    } failure:^(NSString *error) {
+//        [self updateResultView:error];
+//    }];
+}
+
+-(void)meshAnalysis{
+    
 }
 
 
@@ -166,12 +187,9 @@
             [self grantSparkAccessTokenPressed];
             break;
         case 2:
-            [self selectFile];
-            break;
-        case 3:
             [self uploadFile];
             break;
-        case 4:
+        case 3:
             [self meshImport];
             break;
 

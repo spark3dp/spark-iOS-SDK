@@ -7,9 +7,6 @@
 //
 
 #import "UploadFileTask.h"
-#import "Utils.h"
-#import "Constants.h"
-#import "SparkLogicManager.h"
 #import <UIKit/UIKit.h>
 
 @implementation UploadFileTask
@@ -44,8 +41,8 @@
     // post body
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name=\"filename\"; filename=\"file.jpg\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Type: image/jpeg" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"filename\"; filename=\"TeaPot.obj\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: text/plain" dataUsingEncoding:NSUTF8StringEncoding]];
 
     
     if (_fileRequest.fileData){

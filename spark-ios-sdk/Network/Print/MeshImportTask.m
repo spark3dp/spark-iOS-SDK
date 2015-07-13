@@ -7,10 +7,8 @@
 //
 
 #import "MeshImportTask.h"
-#import "Utils.h"
-#import "Constants.h"
-#import "SparkLogicManager.h"
 #import <UIKit/UIKit.h>
+#import "GetTask.h"
 
 @implementation MeshImportTask 
 
@@ -33,16 +31,17 @@
     [urlStr appendString:API_MESH_IMPORT];
     
     NSMutableDictionary * jsonDict = [NSMutableDictionary dictionary];
+    if (!_meshImportRequest.fileId) {
+        _failure(@"Missing file ID");
+        return;
+    }
+    
     [jsonDict setObject:_meshImportRequest.fileId forKey:@"file_id"];
-    [jsonDict setObject:_meshImportRequest.name forKey:@"name"];
-    [jsonDict setObject:_meshImportRequest.transform forKey:@"transform"];
-    NSString * generateVisual = _meshImportRequest.generateVisual ? @"true" : @"false";
-    [jsonDict setObject:generateVisual forKey:@"file_id"];
 
     NSError *error;
     NSString *jsonString = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                       options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     
     if (! jsonData) {
@@ -74,10 +73,21 @@
                                                                options: NSJSONReadingMutableContainers
                                                                  error: &error];
                                
-                               if (JSON) {
-                                   
+                               
+                                if (JSON) {
+                                   NSString * taskId = [JSON objectForKey:@"id"];
+                                   if (taskId) {
+                                       GetTask * task = [[GetTask alloc] initWithTaskId:taskId success:^(id responseObject) {
+                                           _succes(responseObject);
+                                       } failure:^(NSString *error) {
+                                           _failure(error);
+                                       }];
+                                       
+                                       [task executeApiCall];
+                                   }else{
+                                       _failure(@"Missing task id");
+                                   }
                                   
-                                   _succes(nil);
                                }else{
                                    _failure(error.localizedDescription);
                                }

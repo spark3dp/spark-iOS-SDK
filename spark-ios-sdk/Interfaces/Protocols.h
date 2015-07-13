@@ -25,8 +25,6 @@
 
 typedef void(^SparkAuthenticationSuccessBlock)(AccessTokenResponse* responseObject);
 typedef void(^SparkAuthenticationFailureBlock)(NSString* error);
-typedef void(^SparkDriveSuccessBlock)(FileResponse* responseObject);
-typedef void(^SparkDriveFailureBlock)(NSString* error);
 typedef void(^SparkSuccessBlock)(id responseObject);
 typedef void(^SparkFailureBlock)(NSString* error);
 

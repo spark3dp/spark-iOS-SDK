@@ -18,8 +18,8 @@
 + (SparkDrive *)sharedInstance;
 
 - (void)sparkUploadFile:(FileRequest*) fileRequest
-           succesBlock:(SparkDriveSuccessBlock)sucssesBlock
-               failure:(SparkDriveFailureBlock)failureBlock;
+           succesBlock:(SparkSuccessBlock)sucssesBlock
+               failure:(SparkFailureBlock)failureBlock;
 
 -(void) sparkMeshImport:(MeshImportRequest*)meshImportRequest
             succesBlock:(SparkSuccessBlock)succesBlock

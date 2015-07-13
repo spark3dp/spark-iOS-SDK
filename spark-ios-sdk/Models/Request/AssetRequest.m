@@ -26,7 +26,7 @@
     NSError *error;
     NSString *jsonString = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                       options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     
     if (! jsonData) {

@@ -53,6 +53,7 @@ static NSString* API_PRINTER_COMMAND_PAUSE = @"pause";
 static NSString* API_PRINTER_COMMAND_RESUME = @"resume";
 static NSString* API_PRINTER_COMMAND_CANCEL = @"cancel";
 static NSString* API_MESH_IMPORT = @"geom/meshes/import";
+static NSString* API_GET_TASK = @"print/tasks";
 
 
 //Shared Preferences
