@@ -121,13 +121,15 @@
                                                                      isGenerateVisual:NO];
     
     [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
-       [self updateResultView:responseObject];
+       //[self updateResultView:responseObject];
     } failure:^(NSString *error) {
         [self updateResultView:error];
     }];
 }
 
 -(void)meshExport{
+    
+    [self updateResultView:@"Not implemented"];
 //    MeshImportRequest * meshImportRequest = [[MeshImportRequest alloc] initWithFileId:_fileResponse.fileId
 //                                                                                 name:@"TeaPot"
 //                                                                            transfrom:@""
@@ -141,7 +143,7 @@
 }
 
 -(void)meshAnalysis{
-    
+    [self updateResultView:@"Not implemented"];
 }
 
 
@@ -191,6 +193,12 @@
             break;
         case 3:
             [self meshImport];
+            break;
+        case 4:
+            [self meshExport];
+            break;
+        case 5:
+            [self meshAnalysis];
             break;
 
             

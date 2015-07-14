@@ -24,7 +24,7 @@ static NSString* SPARK_TOKEN_TYPE_GUEST = @"Guest Token";
 static NSString* SPARK_TOKEN_TYPE_REGULAR = @"Access Token";
 
 // Spark environment types
-static int SPARK_ENV_TYPE_SANBOX = 0;
+static int SPARK_ENV_TYPE_SANDBOX = 0;
 static int SPARK_ENV_TYPE_PRODUCTION = 1;
 
 // Base Urls

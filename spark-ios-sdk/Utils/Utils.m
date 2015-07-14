@@ -18,7 +18,7 @@
 
 +(NSString*)getBaseURL{
     
-    return ([[SparkLogicManager sharedInstance] baseURLType] == SPARK_ENV_TYPE_SANBOX) ? SPARK_BASE_URL_SANDBOX : SPARK_BASE_URL_PRODUCTION;
+    return ([[SparkLogicManager sharedInstance] baseURLType] == SPARK_ENV_TYPE_SANDBOX) ? SPARK_BASE_URL_SANDBOX : SPARK_BASE_URL_PRODUCTION;
 }
 
 +(BOOL)needToUpdateAccessToken{

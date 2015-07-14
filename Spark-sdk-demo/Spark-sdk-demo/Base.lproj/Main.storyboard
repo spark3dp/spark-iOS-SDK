@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Auth-->
+        <!--SDK DEMO-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-7o-Pp3" userLabel="Session Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-7o-Pp3" userLabel="Session Text Field">
                                 <rect key="frame" x="153" y="98" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6ze-H4-G1X"/>
@@ -100,7 +100,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Auth" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="SDK DEMO" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="resultTextView" destination="rz2-13-VTe" id="StR-l8-cZO"/>
                         <outlet property="sessionTokenTypeTextField" destination="aEg-7o-Pp3" id="3kn-ww-1hj"/>
@@ -109,78 +109,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
-        </scene>
-        <!--Drive-->
-        <scene sceneID="wg7-f3-ORb">
-            <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huN-xG-bbs">
-                                <rect key="frame" x="220" y="110" width="160" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="JJm-FD-ls9"/>
-                                    <constraint firstAttribute="width" constant="160" id="m3R-Ak-eSw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Select File">
-                                    <color key="titleColor" red="1" green="0.1215686275" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectFile:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Qie-fG-3NF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RyM-lQ-v3D">
-                                <rect key="frame" x="220" y="170" width="160" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="FiO-ch-1vy"/>
-                                    <constraint firstAttribute="width" constant="160" id="NFI-YO-3W7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Upload File">
-                                    <color key="titleColor" red="1" green="0.1215686275" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadFile:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Heb-Js-aza"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-2v-HEZ">
-                                <rect key="frame" x="180" y="226" width="240" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="IT0-te-uDR"/>
-                                    <constraint firstAttribute="height" constant="200" id="ZUW-83-YOu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="huN-xG-bbs" secondAttribute="centerX" id="X3E-Xg-HZQ"/>
-                            <constraint firstItem="RyM-lQ-v3D" firstAttribute="top" secondItem="huN-xG-bbs" secondAttribute="bottom" constant="30" id="Z6d-wd-fYq"/>
-                            <constraint firstItem="huN-xG-bbs" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="90" id="hbQ-GI-IuN"/>
-                            <constraint firstItem="kJl-2v-HEZ" firstAttribute="top" secondItem="RyM-lQ-v3D" secondAttribute="bottom" constant="26" id="tNm-qc-Hvr"/>
-                            <constraint firstAttribute="centerX" secondItem="kJl-2v-HEZ" secondAttribute="centerX" id="wc7-RR-aQ1"/>
-                            <constraint firstAttribute="centerX" secondItem="RyM-lQ-v3D" secondAttribute="centerX" id="yj8-vh-cVJ"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Drive" image="second" id="cPa-gy-q4n"/>
-                    <connections>
-                        <outlet property="resultTextView" destination="kJl-2v-HEZ" id="b1h-VC-OvA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="360"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -194,7 +122,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -205,6 +132,5 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="logo.png" width="348" height="60"/>
-        <image name="second" width="30" height="30"/>
     </resources>
 </document>

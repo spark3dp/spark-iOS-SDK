@@ -21,11 +21,10 @@
     // Override point for customization after application launch.
     
     // Use init with keys in case of app + secret
-
-    NSString *appKey = @"mbrTS20Y8BFH7a0O3484B1QjvJQ93tgp";
-    NSString *appSecret = @"s0PAMowXbAffpNvG";
+    NSString *appKey = @"INSERT_APP_KEY_HERE";
+    NSString *appSecret = @"INSERT_SECRET_HERE";
     
-    [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
+    [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANDBOX];
     [[SparkManager sharedInstance] setDebugMode:YES];
 
     return YES;
