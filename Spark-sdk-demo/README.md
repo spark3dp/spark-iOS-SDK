@@ -13,8 +13,8 @@ To run this sample app, you must register an app on the Spark developers' portal
 	Set appKey to the App Key provided when you registered your app on the Spark developers' portal.<br>
 	Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.
 	
-	// In real world apps, these values need to be secured and not hardcoded.
-	NSString *appKey = "INSERT_APP_KEY_HERE";
+	// In real world apps, these values need to be secured and not hardcoded.<Br>
+	NSString *appKey = "INSERT_APP_KEY_HERE";<br>
 	NSString * appSecret = "INSERT_SECRET_HERE";
 
 3.  To use the Spark SDK, initialize the "SparkManager".<br>
