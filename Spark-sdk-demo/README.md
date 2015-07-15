@@ -22,6 +22,6 @@ To run this sample app, you must register an app on the Spark developers' portal
     [[SparkManager sharedInstance] setDebugMode:YES];
 
 4. Run the project.<br>
-Note:
+Note:<br>
 The first tab handles Spark Authentication.<br>
 The second tab handles Spark Drive.
