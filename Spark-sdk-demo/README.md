@@ -18,8 +18,8 @@ To run this sample app, you must register an app on the Spark developers' portal
 	NSString * appSecret = "INSERT_SECRET_HERE";</code>
 
 3)  To use the Spark SDK, initialize the "SparkManager".<br>
-    [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
-    [[SparkManager sharedInstance] setDebugMode:YES];
+   <code> [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
+    [[SparkManager sharedInstance] setDebugMode:YES];</code>
 
 4) Run the project.</br>
 Note:</br>
