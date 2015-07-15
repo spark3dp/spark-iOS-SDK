@@ -7,13 +7,13 @@ To run this sample app, you must register an app on the Spark developers' portal
 
 1) Download the sample apps from https://github.com/spark3dp/authentication-samples and copy the Objective C folder. 
 
-2) Locate the AppDelegate.m file in the Objective C folder and change the following:<br>
+2) Locate the _AppDelegate.m_ file in the Objective C folder and change the following:<br>
     Under - (BOOL)application: didFinishLaunchingWithOptions:
-
-   * Set appKey to the App Key provided when you registered your app on the Spark developers' portal.
-   * Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.
-	
-	// In real world apps, these values need to be secured and not hardcoded.</Br>
+<ul>
+  <li> Set appKey to the App Key provided when you registered your app on the Spark developers' portal.</li>
+  <li> Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.</li>
+</ul>	
+	// In real world apps, these values need to be secured and not hardcoded.
 <code>	NSString *appKey = "INSERT_APP_KEY_HERE";
 	NSString * appSecret = "INSERT_SECRET_HERE";</code>
 
