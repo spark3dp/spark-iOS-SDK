@@ -23,5 +23,5 @@ To run this sample app, you must register an app on the Spark developers' portal
 
 4. Run the project.
 Note:
-The first tab handles SPARK Authentication.
-The second tab handle SPARK Drive.
+The first tab handles Spark Authentication.
+The second tab handles Spark Drive.
