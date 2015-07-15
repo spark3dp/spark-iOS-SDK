@@ -10,7 +10,7 @@ To run this sample app, you must register an app on the Spark developers' portal
 2. Locate the AppDelegate.m file in the Objective C folder and change the following:
     Under - (BOOL)application: didFinishLaunchingWithOptions:
 
-	Set appKey to the App Key provided when you registered your app on the Spark developers' portal.
+	Set appKey to the App Key provided when you registered your app on the Spark developers' portal.<br>
 	Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.
 	
 	// In real world apps, these values need to be secured and not hardcoded.
