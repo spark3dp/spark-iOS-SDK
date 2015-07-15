@@ -21,7 +21,7 @@ To run this sample app, you must register an app on the Spark developers' portal
     [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
     [[SparkManager sharedInstance] setDebugMode:YES];
 
-4. Run the project.
+4. Run the project.<br>
 Note:
 The first tab handles Spark Authentication.
 The second tab handles Spark Drive.
