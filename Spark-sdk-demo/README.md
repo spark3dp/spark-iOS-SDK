@@ -13,13 +13,17 @@ To run this sample app, you must register an app on the Spark developers' portal
   <li> Set appKey to the App Key provided when you registered your app on the Spark developers' portal.</li>
   <li> Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.</li>
 </ul>	
-	// In real world apps, these values need to be secured and not hardcoded.
-<code>NSString *appKey = "INSERT_APP_KEY_HERE";</code></br>
-<code>NSString * appSecret = "INSERT_SECRET_HERE";</code>
+```C
+// In real world apps, these values need to be secured and not hardcoded.
+NSString *appKey = "INSERT_APP_KEY_HERE";
+NSString * appSecret = "INSERT_SECRET_HERE";
+```
 
-3)  To use the Spark SDK, initialize the "SparkManager".<br>
-<code>  [[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
-        [[SparkManager sharedInstance] setDebugMode:YES];</code>
+3)  To use the Spark SDK, initialize the "SparkManager".
+```C
+[[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
+[[SparkManager sharedInstance] setDebugMode:YES]; 
+```
 
 4) Run the project.</br>
 Note:</br>
