@@ -27,7 +27,9 @@
     _apiCommnads = [NSArray arrayWithObjects:@"Grant Spark Guest Token",
                     @"Grant Spark Access Token",
                     @"Upload File",
-                    @"Mesh Import", @"Mesh Export",  @"Mesh Analysis", nil];
+                    @"Mesh Import",
+                    @"Mesh Export",
+                    @"Mesh Analysis", nil];
     
     _resultText = [NSMutableString string];
     
@@ -121,25 +123,14 @@
                                                                      isGenerateVisual:NO];
     
     [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
-       //[self updateResultView:responseObject];
+        NSLog(@"%@", responseObject);
     } failure:^(NSString *error) {
         [self updateResultView:error];
     }];
 }
 
 -(void)meshExport{
-    
     [self updateResultView:@"Not implemented"];
-//    MeshImportRequest * meshImportRequest = [[MeshImportRequest alloc] initWithFileId:_fileResponse.fileId
-//                                                                                 name:@"TeaPot"
-//                                                                            transfrom:@""
-//                                                                     isGenerateVisual:NO];
-//    
-//    [[SparkDrive sharedInstance] sparkMeshImport:meshImportRequest succesBlock:^(NSDictionary *responseObject) {
-//        [self updateResultView:responseObject];
-//    } failure:^(NSString *error) {
-//        [self updateResultView:error];
-//    }];
 }
 
 -(void)meshAnalysis{

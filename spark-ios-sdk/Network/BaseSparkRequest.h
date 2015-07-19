@@ -13,7 +13,7 @@
 #import "SparkLogicManager.h"
 
 @interface BaseSparkRequest : NSObject{
-    SparkAuthenticationSuccessBlock _succesAuth;
+    SparkAuthenticationSuccessBlock _successAuth;
     SparkAuthenticationFailureBlock _failureAuth;
     SparkSuccessBlock _succes;
     SparkFailureBlock _failure;

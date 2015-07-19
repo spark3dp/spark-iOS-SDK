@@ -39,7 +39,6 @@
 		93F007191B49467300446F08 /* SparkDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007181B49467300446F08 /* SparkDrive.m */; };
 		93F0071C1B494AFF00446F08 /* FileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0071B1B494AFF00446F08 /* FileResponse.m */; };
 		93F007241B4AC6E800446F08 /* RefreshTokenTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007231B4AC6E800446F08 /* RefreshTokenTask.m */; };
-		93F007281B4C18B900446F08 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93F007271B4C18B900446F08 /* ReadMe.txt */; };
 		93F0075A1B4D55D500446F08 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F007591B4D55D500446F08 /* logo.png */; };
 		93F0075D1B4D5D9100446F08 /* MeshImportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F0075C1B4D5D9100446F08 /* MeshImportRequest.m */; };
 		93F007611B4D6B5700446F08 /* MeshImportTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F007601B4D6B5700446F08 /* MeshImportTask.m */; };
@@ -463,7 +462,6 @@
 			files = (
 				93F0075A1B4D55D500446F08 /* logo.png in Resources */,
 				933EC4161B3BF65E009C5CEB /* Images.xcassets in Resources */,
-				93F007281B4C18B900446F08 /* ReadMe.txt in Resources */,
 				93F007671B4E62C500446F08 /* TeaPot.obj in Resources */,
 				931747731B3FE2F3000519A3 /* Main.storyboard in Resources */,
 			);

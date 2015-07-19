@@ -40,22 +40,38 @@ typedef enum ActionType
 
 @property (nonatomic, strong) BaseNetworkWrapper * baseNetworkWrapper;
 
+/** receive guest token from server.
+ *
+ * @param succsesBlock, on success return SparkAuthenticationSuccessBlock class.
+ * @param failBlock return SparkAuthenticationFailureBlock class.
+ */
 -(void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+
+/** receive Authorize token from server.
+ *
+ * @param succsesBlock, on success return SparkAuthenticationSuccessBlock class.
+ * @param failBlock return SparkAuthenticationFailureBlock class.
+ */
 -(void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock
                     failure:(SparkAuthenticationFailureBlock)failBlock
        parentViewController:(UIViewController*)parent;
 
--(void)getAsset:(AssetRequest*)asset
-        success:(SparkSuccessBlock)success
-        failure:(SparkFailureBlock)failure;
-
--(void)getAssetsListSuccess:(SparkSuccessBlock)success
-                    failure:(SparkFailureBlock)failure;
-
--(void)uploadFile:(FileRequest*)file
+/** sendfile to server.
+ *
+ * @param fileRequest, file request obj that describe the uploaded file.
+ * @param success, on success return SparkSuccessBlock class.
+ * @param failure return SparkFailureBlock class.
+ */
+-(void)uploadFile:(FileRequest*)fileRequest
           success:(SparkSuccessBlock)success
           failure:(SparkFailureBlock)failure;
 
+/** Mesh Import from server.
+ *
+ * @param meshImportRequest, mesh request obj that describe the uploaded mesh.
+ * @param success, on success return SparkSuccessBlock class.
+ * @param failure return SparkFailureBlock class.
+ */
 -(void)meshImport:(MeshImportRequest*)meshImportRequest
           success:(SparkSuccessBlock)success
           failure:(SparkFailureBlock)failure;

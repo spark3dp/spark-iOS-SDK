@@ -30,7 +30,7 @@
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
-    [urlStr appendString:API_GET_TASK];
+    [urlStr appendString:SPARK_API_GET_TASK];
     [urlStr appendString:@"/"];
     [urlStr appendString:_taskId];
 

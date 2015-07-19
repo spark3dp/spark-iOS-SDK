@@ -35,25 +35,25 @@ static NSString* SPARK_BASE_URL_SANDBOX = @"https://sandbox.spark.autodesk.com/a
 static NSString* SPARK_BASE_URL_PRODUCTION = @"https://api.spark.autodesk.com/api/v1";
 
 // API CALLS
-static NSString* API_PRINTER_PID = @"{{PID}}";
-static NSString* API_MEMBER_MID = @"{{MID}}";
-static NSString* API_GET_GUEST_TOKEN = @"oauth/accesstoken";
-static NSString* API_GET_REFRESH_TOKEN = @"oauth/refreshtoken";
-static NSString* API_GET_ASSETS = @"assets";
-static NSString* API_GET_MEMBERS_ASSETS = @"members/{{MID}}/assets";
-static NSString* API_GET_MEMBERS = @"members";
-static NSString* API_AUTHORIZE = @"oauth/authorize";
-static NSString* API_UPLOAD_FILE = @"files/upload";
-static NSString* API_PRINTER_REGISTER = @"print/printers/register";
-static NSString* API_PRINTER_UNREGISTER = @"print/printers";
-static NSString* API_PRINTER_CREATE_JOB = @"print/printers/{{PID}}/jobs";
-static NSString* API_PRINTER_COMMAND_SEND = @"print/printers/{{PID}}/command";
-static NSString* API_PRINTER_JOB_STATUS = @"print/jobs";
-static NSString* API_PRINTER_COMMAND_PAUSE = @"pause";
-static NSString* API_PRINTER_COMMAND_RESUME = @"resume";
-static NSString* API_PRINTER_COMMAND_CANCEL = @"cancel";
-static NSString* API_MESH_IMPORT = @"geom/meshes/import";
-static NSString* API_GET_TASK = @"print/tasks";
+static NSString* SPARK_API_PRINTER_PID = @"{{PID}}";
+static NSString* SPARK_API_MEMBER_MID = @"{{MID}}";
+static NSString* SPARK_API_GET_GUEST_TOKEN = @"oauth/accesstoken";
+static NSString* SPARK_API_GET_REFRESH_TOKEN = @"oauth/refreshtoken";
+static NSString* SPARK_API_GET_ASSETS = @"assets";
+static NSString* SPARK_API_GET_MEMBERS_ASSETS = @"members/{{MID}}/assets";
+static NSString* SPARK_API_GET_MEMBERS = @"members";
+static NSString* SPARK_API_AUTHORIZE = @"oauth/authorize";
+static NSString* SPARK_API_UPLOAD_FILE = @"files/upload";
+static NSString* SPARK_API_PRINTER_REGISTER = @"print/printers/register";
+static NSString* SPARK_API_PRINTER_UNREGISTER = @"print/printers";
+static NSString* SPARK_API_PRINTER_CREATE_JOB = @"print/printers/{{PID}}/jobs";
+static NSString* SPARK_API_PRINTER_COMMAND_SEND = @"print/printers/{{PID}}/command";
+static NSString* SPARK_API_PRINTER_JOB_STATUS = @"print/jobs";
+static NSString* SPARK_API_PRINTER_COMMAND_PAUSE = @"pause";
+static NSString* SPARK_API_PRINTER_COMMAND_RESUME = @"resume";
+static NSString* SPARK_API_PRINTER_COMMAND_CANCEL = @"cancel";
+static NSString* SPARK_API_MESH_IMPORT = @"geom/meshes/import";
+static NSString* SPARK_API_GET_TASK = @"print/tasks";
 
 
 //Shared Preferences

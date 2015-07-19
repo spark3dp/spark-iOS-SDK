@@ -30,7 +30,7 @@
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
-    [urlStr appendString:API_UPLOAD_FILE];
+    [urlStr appendString:SPARK_API_UPLOAD_FILE];
     
     NSURL * url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url

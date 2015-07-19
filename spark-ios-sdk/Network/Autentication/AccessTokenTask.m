@@ -19,7 +19,7 @@
     
     self = [super init];
     if (self) {
-        _succesAuth = succsesBlock;
+        _successAuth = succsesBlock;
         _failureAuth = failBlock;
         _authCode = authCode;
     }
@@ -33,7 +33,7 @@
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
-    [urlStr appendString:API_GET_GUEST_TOKEN];
+    [urlStr appendString:SPARK_API_GET_GUEST_TOKEN];
     
     NSMutableString * httpPostBody =  [NSMutableString stringWithFormat:@"grant_type=authorization_code&code=%@&response_type=code&redirect_uri=http://www.%@.com", _authCode.autoCode, SPARK_CALLBACK_SITE_NAME];
     
@@ -68,7 +68,7 @@
                                    accessTokenResponse.refreshToken = [JSON objectForKey:@"refresh_token"];
                                    accessTokenResponse.expiresIn = [JSON objectForKey:@"expires_in"];
                                    accessTokenResponse.expiresAt = [JSON objectForKey:@"expires_at"];
-                                   _succesAuth(accessTokenResponse);
+                                   _successAuth(accessTokenResponse);
                                }else{
                                    _failureAuth(error.localizedDescription);
                                }

@@ -242,7 +242,7 @@
     NSMutableString * initialUrl = [NSMutableString string];
     [initialUrl appendString:[Utils getBaseURL]];
     [initialUrl appendString:@"/"];
-    [initialUrl appendString:API_AUTHORIZE];
+    [initialUrl appendString:SPARK_API_AUTHORIZE];
     [initialUrl appendString:@"?"];
     [initialUrl appendString:[NSString stringWithFormat:@"%@=%@", SPARK_LOGIN_REQUEST_PARAM_RESPONSE_TYPE, SPARK_LOGIN_REQUEST_VALUE_RESPONSE_TYPE]];
     [initialUrl appendString:@"&"];

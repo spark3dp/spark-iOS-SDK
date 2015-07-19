@@ -28,7 +28,7 @@
     NSMutableString * urlStr = [NSMutableString string];
     [urlStr appendString:[Utils getBaseURL]];
     [urlStr appendString:@"/"];
-    [urlStr appendString:API_MESH_IMPORT];
+    [urlStr appendString:SPARK_API_MESH_IMPORT];
     
     NSMutableDictionary * jsonDict = [NSMutableDictionary dictionary];
     if (!_meshImportRequest.fileId) {
