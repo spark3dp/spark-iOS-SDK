@@ -2,8 +2,8 @@
 //  MeshImportTask.m
 //  Spark-sdk-demo
 //
-//  Created by Tomer Har Yoffi on 7/8/15.
-//  Copyright (c) 2015 Tomer Har Yoffi. All rights reserved.
+//  Created by Autodesk on 7/8/15.
+//  Copyright (c) 2015 Autodesk. All rights reserved.
 //
 
 #import "MeshImportTask.h"
