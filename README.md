@@ -11,18 +11,18 @@ Download this repository and import it into your project.
 
 The Spark iOS SDK comes with a sample app, located in the library’s App folder.
 
-To use the Spark iOS SDK you must first <i>add an app</i> on the [Spark Developer’s Portal](https://spark.autodesk.com/developers/myApps) and save the app key and app secret Spark generates. For more information see [the tutorial](https://spark.autodesk.com/developers/reference/introduction/tutorials/register-an-app).
+To use the Spark iOS SDK you must first <i>add an app</i> on the [Spark Developers Portal](https://spark.autodesk.com/developers/myApps) and save the app key and app secret Spark generates. For more information see [the tutorial](https://spark.autodesk.com/developers/reference/introduction/tutorials/register-an-app).
 
 ##Setting Up the SDK
 
 ##1. Initialization
 
 Call the init method passing the app key and app secret allocated by the [developer portal](https://spark.autodesk.com/developers/myApps):
-```JavaScript
+```objective-c
  [[SparkManager sharedInstance] initKey:[appKey] appSecret:[appSecret] envType:[ENV_TYPE]];
 ```
 Enable debug mode to see logcat messages regarding your configuration and any error messages or notifications.<br>
-```JavaScript
+```objective-c
  [[SparkManager sharedInstance] setDebugMode:YES];
 ```
 
@@ -31,11 +31,11 @@ Enable debug mode to see logcat messages regarding your configuration and any er
 Spark API use OAUTH 2.0 authentication.<br>
 There are two types of authentication available:<br>
 * Guest Token - For read only permissions. Gives you access to public data on Spark.
-* Access Token - For read\write access to a Spark member’s private data. Access Tokens log the user in from your app.
+* Access Token - For read/write access to a Spark member’s private data. Access Tokens log the user in from your app.
 
 ###2.1 Generate a Guest Token
 
-```JavaScript
+```objective-c
     [[SparkAuthentication sharedInstance] getGuestToken:^(AccessTokenResponse *responseObject) {
         // Success !
         // Call Spark API
@@ -46,7 +46,7 @@ There are two types of authentication available:<br>
 ```
 
 ###2.2  Get Access Token
-```JavaScript
+```objective-c
     [[SparkAuthentication sharedInstance] getAuthorizationCode:^(AccessTokenResponse *responseObject) {
         // Success !
         // Call Spark API
@@ -59,7 +59,7 @@ There are two types of authentication available:<br>
 ##3. List of the Spark API Available in the SDK
 
 ###3.1 Authentication API
-```JavaScript
+```objective-c
     - (void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
     - (void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock
                      failure:(SparkAuthenticationFailureBlock)failBlock
@@ -69,12 +69,12 @@ The Authentication API authenticates users and apps and provides access to the S
 Autentication API documentation: https://spark.autodesk.com/developers/reference/authentication.
 
 ###3.2 Drive API
-```JavaScript     
-   - (void)sparkUploadFile:(FileRequest*) fileRequest
+```objective-c     
+    - (void)sparkUploadFile:(FileRequest*) fileRequest
            succesBlock:(SparkSuccessBlock)sucssesBlock
                failure:(SparkFailureBlock)failureBlock;
 
-    -(void) sparkMeshImport:(MeshImportRequest*)meshImportRequest
+    - (void)sparkMeshImport:(MeshImportRequest*)meshImportRequest
             succesBlock:(SparkSuccessBlock)succesBlock
                 failure:(SparkFailureBlock)failureBlock;
 ```
