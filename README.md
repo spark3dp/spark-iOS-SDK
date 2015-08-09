@@ -1,34 +1,88 @@
-This tutorial describes how to run the Objective C version of the quick start app.
-The app generates an access token, authenticating the app user and giving full access to the Spark APIs for a single session.
-It can also be used to generate a guest token and to refresh an access token. 
-For more information about authentication see our Authentication API.
+#Spark iOS SDK
 
-To run this sample app, you must register an app on the Spark developers' portal.
+This open-source SDK library enables you to easily integrate the Spark 3D printing API into your iOS applications.<br>
+Spark APIs are web based RESTful APIs providing an open, free and complete toolkit of professional-grade resources for 3D printing and related manufacturing processes. 
 
-1) Download the sample apps from https://github.com/spark3dp/authentication-samples and copy the Objective C folder. 
+<b>Spark APIs are current in beta: [Request access](https://spark.autodesk.com/developers/).</b>
 
-2) Locate the _AppDelegate.m_ file in the Objective C folder, _Spark-sdk-demo_ and change the following:<br>
-    Under - (BOOL)application: didFinishLaunchingWithOptions:
-<ul>
-  <li> Set appKey to the App Key provided when you registered your app on the Spark developers' portal.</li>
-  <li> Set appSecret to the App Secret provided when you registered your app on the Spark developers' portal.</li>
-</ul>	
-```C
-// In real world apps, these values need to be secured and not hardcoded.
-NSString *appKey = "INSERT_APP_KEY_HERE";
-NSString *appSecret = "INSERT_SECRET_HERE";
+##Getting Started
+
+Download this repository and import it into your project.
+
+The Spark iOS SDK comes with a sample app, located in the library’s App folder.
+
+To use the Spark iOS SDK you must first <i>add an app</i> on the [Spark Developer’s Portal](https://spark.autodesk.com/developers/myApps) and save the app key and app secret Spark generates. For more information see [the tutorial](https://spark.autodesk.com/developers/reference/introduction/tutorials/register-an-app).
+
+##Setting Up the SDK
+
+##1. Initialization
+
+Call the init method passing the app key and app secret allocated by the [developer portal](https://spark.autodesk.com/developers/myApps):
+```JavaScript
+ [[SparkManager sharedInstance] initKey:[appKey] appSecret:[appSecret] envType:[ENV_TYPE]];
+```
+Enable debug mode to see logcat messages regarding your configuration and any error messages or notifications.<br>
+```JavaScript
+ [[SparkManager sharedInstance] setDebugMode:YES];
 ```
 
-3)  To use the Spark SDK, initialize the "SparkManager".
-```C
-[[SparkManager sharedInstance] initKey:appKey appSecret:appSecret envType:SPARK_ENV_TYPE_SANBOX];
-[[SparkManager sharedInstance] setDebugMode:YES]; 
+##2. Authentication
+
+Spark API use OAUTH 2.0 authentication.<br>
+There are two types of authentication available:<br>
+* Guest Token - For read only permissions. Gives you access to public data on Spark.
+* Access Token - For read\write access to a Spark member’s private data. Access Tokens log the user in from your app.
+
+###2.1 Generate a Guest Token
+
+```JavaScript
+    [[SparkAuthentication sharedInstance] getGuestToken:^(AccessTokenResponse *responseObject) {
+        // Success !
+        // Call Spark API
+    } failure:^(NSString *error) {
+        // Failure
+        // Check error message
+    }];
 ```
 
-4) Run the project.</br>
-Note:</br>
-The first tab handles Spark Authentication.</br>
-The second tab handles Spark Drive.
+###2.2  Get Access Token
+```JavaScript
+    [[SparkAuthentication sharedInstance] getAuthorizationCode:^(AccessTokenResponse *responseObject) {
+        // Success !
+        // Call Spark API
+    } failure:^(NSString *error) {
+        // Failure
+        // Check error message
+    } parentViewController:self];
 
-Demo:
-https://github.com/spark3dp/spark-iOS-SDK/tree/master/Spark-sdk-demo
+```
+##3. List of the Spark API Available in the SDK
+
+###3.1 Authentication API
+```JavaScript
+    - (void)getGuestToken:(SparkAuthenticationSuccessBlock)succsesBlock failure:(SparkAuthenticationFailureBlock)failBlock;
+    - (void)getAuthorizationCode:(SparkAuthenticationSuccessBlock)succsesBlock
+                     failure:(SparkAuthenticationFailureBlock)failBlock
+        parentViewController:(UIViewController*)parent;
+```
+The Authentication API authenticates users and apps and provides access to the Spark API. 
+Autentication API documentation: https://spark.autodesk.com/developers/reference/authentication.
+
+###3.2 Drive API
+```JavaScript     
+   - (void)sparkUploadFile:(FileRequest*) fileRequest
+           succesBlock:(SparkSuccessBlock)sucssesBlock
+               failure:(SparkFailureBlock)failureBlock;
+
+    -(void) sparkMeshImport:(MeshImportRequest*)meshImportRequest
+            succesBlock:(SparkSuccessBlock)succesBlock
+                failure:(SparkFailureBlock)failureBlock;
+```
+
+The Drive API stores 3D models and their files, uploads files for printing, provides social network services such as “like” of members, “favorite” models and attaches comments to models. 
+Drive API Documentation: https://spark.autodesk.com/developers/reference/drive.
+
+##Feedback
+
+Please report bugs or issues to Spark Support at https://spark.autodesk.com/developers/inbox or simply let us know what you think of the SDK.
+
