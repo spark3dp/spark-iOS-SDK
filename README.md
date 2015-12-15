@@ -66,7 +66,7 @@ There are two types of authentication available:<br>
         parentViewController:(UIViewController*)parent;
 ```
 The Authentication API authenticates users and apps and provides access to the Spark API. 
-Autentication API documentation: https://spark.autodesk.com/developers/reference/authentication.
+Autentication API documentation: https://spark.autodesk.com/developers/reference/api/authentication.
 
 ###3.2 Drive API
 ```objective-c     
@@ -80,7 +80,7 @@ Autentication API documentation: https://spark.autodesk.com/developers/reference
 ```
 
 The Drive API stores 3D models and their files, uploads files for printing, provides social network services such as “like” of members, “favorite” models and attaches comments to models. 
-Drive API Documentation: https://spark.autodesk.com/developers/reference/drive.
+Drive API Documentation: https://spark.autodesk.com/developers/reference/api/drive.
 
 ##Feedback
 
